@@ -1,0 +1,101 @@
+@use '../utils' as *;
+
+
+.tp-custom-accordion {
+    & .accordion-items {
+        margin-bottom: 20px;
+        box-shadow: 0px 25px 65px rgba(0, 0, 0, 0.07);
+        border-radius: 16px;
+    }
+    & .accordion-buttons {
+        position: relative;
+        width: 100%;
+        padding: 26px 30px;
+        padding-left: 60px;
+        background-color: var(--tp-common-white);
+        text-align: left;
+        font-weight: 700;
+        font-size: 18px;
+        color: var(--tp-theme-1);
+        @media #{$xl} {
+            font-size: 19px;
+        }
+        @media #{$lg} {
+            padding: 25px 28px;
+            padding-left: 60px;
+            font-size: 16px;
+        }
+        @media #{$xs} {
+            font-size: 14px;
+        }
+        @media #{$sm} {
+            font-size: 15px;
+        }
+        &::after {
+            position: absolute;
+            content: "\f068";
+            font-family: 'Font Awesome 5 Pro';
+            top:50%;
+            transform: translateY(-50%);
+            left: 30px;
+            font-size: 16px;
+            opacity: 1;
+            color: var(--tp-common-orange);
+            @media #{$xs} {
+                top: 35px;
+                right: 25px;
+                font-size: 13px;
+            }
+        }
+
+        &.collapsed {
+            &::after {
+                content: '\f067';
+            }
+        }
+    }
+
+    & .collapsed {
+        position: relative;
+        z-index: 99;
+    }
+
+    & .accordion-body {
+        background-color: var(--tp-common-white);
+        padding-bottom: 20px;
+        padding-left: 100px;
+        padding-right: 55px;
+        position: relative;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 28px;
+        z-index: 1;
+        @media #{$lg}{
+            font-size: 14px;
+            padding-right: 25px;
+        }
+        @media #{$md}{
+            font-size: 14px;
+            padding-right:30px;
+            padding-bottom: 50px;
+        }
+        @media #{$xs}{
+            font-size: 13px;
+            padding-right:30px;
+            padding-left: 30px;
+        }
+        &::after{
+            position: absolute;
+            content: '';
+            top:6px;
+            left: 70px;
+            width: 1px;
+            height:75px;
+            background-color: var(--tp-common-orange);
+            @media #{$xs}{
+                display: none;
+                visibility: hidden;
+            }
+        }
+    }
+}

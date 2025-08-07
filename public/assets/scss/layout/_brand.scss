@@ -1,0 +1,26 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  05. brand css start
+/*----------------------------------------*/
+.tp-brand-2{
+    &__border{
+        padding-top: 60px;
+        padding-bottom: 70px;
+        border-top: 1px solid var(--tp-border-2);
+    }
+    &__item {
+        &:hover {
+            & img {
+                filter: grayscale(0%);
+                opacity: 1;
+            }
+        }
+        & img {
+            filter: grayscale(100%);
+            opacity: .5;
+            transition: all 0.3s linear;
+        }
+    }
+
+}

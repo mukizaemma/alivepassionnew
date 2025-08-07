@@ -1,0 +1,410 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  20. team css start
+/*----------------------------------------*/
+.tp-team-2{
+    &__section-title{
+        padding-bottom: 50px;
+        @media #{$xs}{
+            padding-bottom: 25px;
+        }
+    }
+    &__wrapper{
+        padding: 0 21px;
+        position: relative;
+        &::after{
+            content:'';
+            position: absolute;
+            bottom:0;
+            left: 0;
+            height:75%;
+            width: 100%;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.961) 20%, rgba(254, 126, 76, 0.633) 100%, rgba(255, 255, 255, 0.957) 100%);
+            background: -webkit-linear-gradient(90deg, rgba(255, 255, 255, 0.961) 20%, rgba(254, 126, 76, 0.633) 100%, rgba(255, 255, 255, 0.957) 100%);
+            background: -moz-linear-gradient(90deg, rgba(255, 255, 255, 0.961) 20%, rgba(254, 126, 76, 0.633) 100%, rgba(255, 255, 255, 0.957) 100%);
+            background: -ms-linear-gradient(90deg, rgba(255, 255, 255, 0.961) 20%, rgba(254, 126, 76, 0.633) 100%, rgba(255, 255, 255, 0.957) 100%);
+            z-index: -2;
+        }
+        &::before{
+            content:'';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            height:74.3%;
+            width: 98%;
+            z-index: -1;
+            background-color: var(--tp-common-white);
+        }
+        &:hover{
+            & .tp-team-2__thumb{
+                & img {
+                    transform: scale(1.1) rotate(-2deg);
+                }
+                &::after{
+                    opacity: 1;
+                    visibility: visible;
+                    height: 100%;
+                }
+            }
+        }
+    }
+    &__thumb{
+        position: relative;
+        overflow: hidden;
+        & img {
+            transition: .5s;
+            width: 100%;
+        }
+        &::after{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 70%;
+            width: 100%;
+            background-color: rgba(30, 55, 55, 0.349);
+            transition: .5s;
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+    &__content{
+        padding: 25px;
+        @media #{$sm}{
+            padding: 25px 15px;
+        }
+    }
+    &__author-name{
+        font-size: 20px;
+        font-weight: 800;
+        margin-bottom: 0;
+        padding-bottom: 3px;
+        transition: .3s;
+        &:hover {
+            color: var(--tp-common-orange);
+        }
+    }
+    &__author-info{
+        & span {
+            font-size: 14px;
+            color: #6e7a7a;
+            font-weight: 600;
+        }
+        padding-bottom: 25px;
+    }
+    &__social-box {
+        & a {
+            font-size: 17px;
+            color: var(--tp-theme-1);
+            display: inline-block;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            background-color: #eef3f2;
+            line-height: 40px;
+            text-align: center;
+            margin: 0 6px;
+            transition: all 500ms ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            &::after{
+                position: absolute;
+                content: "";
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 100%;
+                background-color: var(--tp-common-orange);
+                transition-delay: .1s;
+                transition-timing-function: ease-in-out;
+                transition-duration: .4s;
+                transition-property: all;
+                opacity: 1;
+                transform-origin: top;
+                transform-style: preserve-3d;
+                transform: scaleY(0);
+                z-index: -1;
+            }
+            &:hover {
+                color: var(--tp-common-white);
+                &::after{
+                    opacity: 1;
+                    transform: scaleY(1);
+                }
+            }
+            @media #{$lg,$md,$xs}{
+                font-size: 14px;
+                height: 35px;
+                width: 35px;
+                line-height: 35px;
+                margin: 0 1px;
+            }
+        }
+    }
+}
+.tp-team-details{
+    &__section-title{
+        & p {
+            @media #{$xl,$lg,$md,$xs}{
+                font-size: 15px;
+                & br {
+                    display: none;
+                }
+            }
+        }
+    }
+    &__sapce{
+        padding-top: 65px;
+        @media #{$md}{
+            padding-top: 100px;
+            padding-bottom: 65px;
+        }
+        @media #{$xs}{
+            padding-top: 70px;
+            padding-bottom: 65px;
+        }
+    }
+    &__thumb{
+        position:relative;
+        @media #{$md,$xs}{
+            margin-bottom: 50px;
+        }
+        &::after{
+            position: absolute;
+            content: '';
+            bottom:0;
+            left: 0;
+            height: 94%;
+            width: 70%;
+            background-color: var(--tp-common-orange);
+            z-index: -1;
+            @media #{$lg}{
+                width: 67%;
+            }
+            @media #{$md,$xs}{
+                width: 100%;
+                height: 105%;
+            }
+        }
+        & img {
+            max-width: inherit;
+            margin-left: 71px;
+            @media #{$xxl,$xl}{
+                max-width: 100%;
+                margin-left: 60px;
+            }
+            @media #{$lg}{
+                max-width: 100%;
+                margin-left: 20px;
+            }
+            @media #{$md}{
+                max-width: 80%;
+                margin-left:0px;
+            }
+            @media #{$xs}{
+                max-width: 90%;
+                margin-left:0px;
+            }
+        }
+    }
+    &__progress{
+        width:100%;
+    }
+    &__progress-item{
+        position: relative;
+        padding: 50px 0;
+        margin: 0 50px;
+        @media #{$xs}{
+            margin: 0 15px;
+            padding-bottom: 30px;
+        }
+        &.progress-pb{
+            padding-bottom: 30px;
+        }
+        & h4 {
+            font-weight: 800;
+            font-size: 18px;
+            padding-bottom: 4px;
+        }
+        & .progress-count {
+            position: absolute;
+            top: 21px;
+            right: 0;
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--tp-theme-1);
+        }
+        & .progress{
+            height: 8px;
+            background-color: #fff;
+            border-radius: 0;
+            overflow: visible;
+            margin-bottom: 15px;
+            & .progress-bar{
+                background-color: var(--tp-theme-2);
+                overflow: visible;
+            }
+        }
+        & .progress-goals{ 
+            display: flex;
+            justify-content: space-between;
+            & span {
+                font-size: 14px;
+                font-weight: 400;
+                & b{
+                    font-weight: 800;
+                    color: var(--tp-theme-1);
+                }
+            }
+        }
+    }
+    &__left-box{
+        padding-left: 85px;
+        @media #{$lg,$md,$xs}{
+           padding-left: 48px;
+        }
+        @media #{$md,$xs}{
+           padding-left:0px;
+        }
+    }
+}
+.tp-register{
+    &__left-box{
+        padding-right: 20px;        
+        @media #{$xxxl,$xxl,$xl,$lg}{
+            padding-right: 0;
+        }
+        @media #{$md,$xs}{
+            padding-right: 0;
+            padding-bottom: 60px;
+        }
+    }
+    &__list{
+        padding-bottom: 55px;
+        @media #{$md,$xs}{
+            padding-bottom: 35px;
+        }
+        & ul {
+            & li {
+                font-weight: 700;
+                color: var(--tp-theme-1);
+                position: relative;
+                padding-left: 30px;
+                &:not(:last-child){
+                    padding-bottom: 20px;
+                }
+                & i {
+                    color: var(--tp-common-orange);
+                    position: absolute;
+                    top: 3px;
+                    left: 0;
+                }
+            }
+        }
+    }
+    &__tel-box{
+        @media #{$xs}{
+            flex-wrap: wrap;
+        }
+    }
+    &__tel-icon{
+        @media #{$xs}{
+            padding-bottom: 25px;
+        }
+        @media #{$sm}{
+            padding-bottom:0px;
+        }
+        & span {
+            width: 80px;
+            height: 80px;
+            line-height:80px;
+            border-radius: 50%;
+            text-align: center;
+            background-color: var(--tp-theme-2);
+            display: inline-block;
+            font-size: 36px;
+            color: var(--tp-common-white);
+            margin-right: 25px;
+            & i {
+                transform: translateY(3px);
+                display: inline-block;
+            }
+        }
+    }
+    &__tel-text{
+        & a{
+            font-size: 16px;
+            color: var(--tp-theme-1);
+            font-weight: 700;
+            transition: .3s;
+            display: block;
+            &:hover {
+                color: var(--tp-common-orange);
+            }
+            &.number{
+                color: var(--tp-text-body);
+                font-weight: 400;
+                padding-bottom: 15px;
+            }
+        }
+    }
+    &__input-box{
+        & input {
+            background-color: var(--tp-grey-1);
+            width: 100%;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            transition: .3s;
+            &:focus{
+                border: 1px solid var(--tp-common-orange);
+            }
+        }
+    }
+    &__textarea-box{
+        & textarea {
+            height: 150px;
+            resize: none;
+            margin-bottom: 20px;
+            background-color: var(--tp-grey-1);
+            width: 100%;
+            padding: 30px;
+            padding-top: 25px;
+            font-size: 14px;
+            color: var(--tp-common-black);
+            border: 1px solid transparent;
+            transition: .3s;
+            &:focus{
+                border: 1px solid var(--tp-common-orange);
+            }
+        }
+    }
+    &__thumb {
+        & img {
+            @media #{$lg}{
+                max-width: 50%;
+            }
+            @media #{$md,$xs}{
+                width: 49%;
+            }
+        }
+    }
+    &__text{
+        & p {
+            @media #{$lg,$md}{
+                font-size: 15px;
+                & br {
+                    display: none;
+                }
+            }
+            @media #{$xs}{
+                font-size: 14px;
+                & br {
+                    display: none;
+                }
+            }
+        }
+    }
+}

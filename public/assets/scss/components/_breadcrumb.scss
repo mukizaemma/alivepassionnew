@@ -1,0 +1,95 @@
+@use '../utils' as *;
+
+
+.tp-breadcrumb-height{
+    padding-top: 145px;
+    padding-bottom: 145px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+    background-color:#052725;
+    @media #{$lg}{
+        background-position: bottom;
+    }
+    @media #{$md}{
+        background-position: bottom;
+    }
+
+}
+
+.tp-breadcrumb{
+    &__overlay{
+        position: relative;
+        &::after{
+            content: '';
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: rgba(30, 55, 55, 0.75);
+        }
+    }
+    &__section-box{
+        @media #{$xs}{
+            text-align: center;
+        }
+    }
+    &__title{
+        font-weight: 800;
+        font-size: 50px;
+        line-height: 1;
+        color: var(--tp-common-white); 
+        margin-bottom: 0; 
+        @media #{$lg}{
+            font-size: 45px;
+        }       
+        @media #{$md}{
+            font-size: 34px;
+        }       
+        @media #{$xs}{
+            font-size: 30px;
+        }       
+    }
+
+    &__list{
+        display: inline-block;
+        padding: 8px 20px;
+        background-color: rgba(255, 255, 255, 0.078);
+        margin-bottom: 20px;
+        & span {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--tp-common-white);
+            text-transform: capitalize;
+            opacity: 85%;
+            &.dvdr{
+                & i{
+                    color: var(--tp-common-white);
+                    font-weight: 400;
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+    &__shape-1{
+        position: absolute;
+        bottom: -7%;
+        left: -2%;
+        @media #{$xl,$lg,$md,$xs}{
+            display: none;
+            visibility: hidden;
+        }
+    }
+    &__shape-2{
+        position: absolute;
+        bottom:20px;
+        left: 0%;
+        @media #{$xl,$lg,$md,$xs}{
+            display: none;
+            visibility: hidden;
+        }
+    }
+}
+
+
