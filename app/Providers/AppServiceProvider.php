@@ -19,8 +19,8 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        View::share('setting', Setting::first());
-        View::share('campains', Campain::oldest()->get());
-        View::share('partners', Partner::oldest()->get());
+        //View::share('setting', Setting::first());
+        //View::share('campains', Campain::oldest()->get());
+        //View::share('partners', Partner::oldest()->get());
     }
 }
