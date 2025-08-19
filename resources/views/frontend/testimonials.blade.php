@@ -6,7 +6,7 @@
 
 
         <!-- breadcrumb-area-start -->
-        <div class="tp-breadcrumb__area p-relative fix tp-breadcrumb-height" data-background="{{ asset('storage/images/' . $about->image2) }}" style="height: 500px; width: 80%; margin: 0 auto;" >
+        <div class="tp-breadcrumb__area p-relative fix tp-breadcrumb-height" data-background="{{ asset('storage/images/' . $about->image2) }}">
             <div class="tp-breadcrumb__shape-1 z-index-5">
                 <img src="assets/img/breadcrumb/breadcrumb-shape-1.png" alt="">
             </div>

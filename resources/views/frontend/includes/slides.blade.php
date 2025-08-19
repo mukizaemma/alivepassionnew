@@ -1,11 +1,11 @@
-<div class="tp-slider-3__area p-relative">
+<div class="tp-slider-3__area p-relative custom-banner">
     {{-- <div class="tp-slider-3__icon smooth">
         <a href="#service" class="arrow-scroll-btn"><i class="flaticon-down-arrow"></i></a>
     </div> --}}
 
 
     <!-- Slider Wrapper (80% width and centered) -->
-    <div class="tp-slider-3__wrapper" style="width: 80%; margin: 0 auto;">
+    <div class="tp-slider-3__wrapper">
         <div class="swiper-container tp-slider-3__active">
             <div class="swiper-wrapper">
                 @foreach ($slides as $slide)

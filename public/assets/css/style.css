@@ -1566,6 +1566,9 @@ input[type=text], input[type=email], input[type=tel], input[type=number], input[
   background-size: cover;
   object-fit: cover;
   background-color: #052725;
+  height: 450px;
+  width: 80%;
+  margin: 0 auto;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .tp-breadcrumb-height {
@@ -14127,5 +14130,21 @@ p.checkout-coupon input[type=text]:focus {
   opacity: 1;
   transform: scaleY(1);
 }
+/* Default (small screens & tablets) */
+.custom-banner {
+    height: auto; 
+    width: 100%;
+    margin: 0;
+}
+
+/* Large screens only (≥ 992px for Bootstrap standard) */
+@media (min-width: 992px) {
+    .custom-banner {
+        height: 450px;
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
 
 /*# sourceMappingURL=style.css.map */
