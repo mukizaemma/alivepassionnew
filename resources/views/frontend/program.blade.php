@@ -21,6 +21,9 @@
                             {!! $program->description !!}
                         </p>
                     </div>
+                    <div class="postbox__cta mt-40">
+                        <a class="tp-btn theme-2-bg" href="{{ $setting->getDonateUrl() }}" target="_blank" rel="noopener noreferrer">Get Involved</a>
+                    </div>
                 </div>
             </article>
 
