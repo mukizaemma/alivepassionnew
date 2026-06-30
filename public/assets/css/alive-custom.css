@@ -46,10 +46,10 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    135deg,
-    rgba(10, 35, 22, 0.78) 0%,
-    rgba(30, 95, 61, 0.55) 45%,
-    rgba(0, 0, 0, 0.45) 100%
+    to bottom,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.25) 50%,
+    rgba(30, 95, 61, 0.35) 100%
   );
   z-index: 1;
 }
@@ -59,14 +59,8 @@
   z-index: 2;
   max-width: 920px;
   margin: 0 auto;
-  padding: 2.5rem 2rem;
+  padding: 0 1rem;
   text-align: center;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 20px;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
 }
 
 .alive-hero-eyebrow {
@@ -88,7 +82,9 @@
   font-weight: 800 !important;
   line-height: 1.2 !important;
   margin-bottom: 1.75rem !important;
-  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.8),
+    0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .alive-hero-cta {
@@ -111,11 +107,6 @@
   .alive-hero-slide {
     min-height: 62vh;
     padding: 100px 0 70px !important;
-  }
-
-  .alive-hero-content {
-    padding: 1.5rem 1.25rem;
-    border-radius: 14px;
   }
 }
 
