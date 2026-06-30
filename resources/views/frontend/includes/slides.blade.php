@@ -28,7 +28,7 @@
                                     <div class="col-xl-12">
                                         <div class="tp-slider-3__content text-center">
                                             <h2 class="tp-slider-3-title pb-30" style="color: #1e5f3d">{{ $slide->heading }}</h2>
-                                            <a class="tp-btn theme-2-bg" href="{{ $setting->getDonateUrl() }}">Get Involved</a>
+                                            <a class="tp-btn theme-2-bg" href="{{ $setting->getDonateUrl() }}" target="_blank" rel="noopener noreferrer">Get Involved</a>
                                         </div>
                                     </div>
                                 </div>
