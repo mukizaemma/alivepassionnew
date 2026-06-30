@@ -60,7 +60,7 @@
                                         </div>
                                     </div>
                                     <div class="tp-donate__button">
-                                        <a class="tp-grey-btn" href="{{ route('campaign',['slug'=>$campaign->slug]) }}">Donate Now</a>
+                                        <a class="tp-grey-btn" href="{{ $setting->getDonateUrl() }}">Donate Now</a>
                                     </div>
                                 </div>
                             </div>

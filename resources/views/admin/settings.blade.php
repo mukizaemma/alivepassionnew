@@ -85,6 +85,19 @@
                                                 </div>
 
                                                 <div class="row mt-5">
+                                                    <div class="col-lg-12 col-sm-12">
+                                                        <div class="form-group">
+                                                            <label for="donate_url">Donate / Get Involved URL</label>
+                                                            <input type="url" class="form-control" id="donate_url"
+                                                                value="{{ $data->donate_url }}"
+                                                                name="donate_url"
+                                                                placeholder="{{ \App\Models\Setting::DEFAULT_DONATE_URL }}">
+                                                            <small class="text-muted">Used by the Donate Now and Get Involved buttons across the site.</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mt-3">
                                                     <div class="col-lg-4 col-sm-12">
                                                         <div class="form-group">
                                                             <label for="projectinput1">Facebook</label>

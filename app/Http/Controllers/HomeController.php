@@ -330,6 +330,7 @@ class HomeController extends Controller
         $data->facebook = $request->input('facebook');
         $data->instagram = $request->input('instagram');
         $data->youtube = $request->input('youtube');
+        $data->donate_url = $request->input('donate_url');
 
 
         if ($request->hasFile('logo') && request('logo') != '') {

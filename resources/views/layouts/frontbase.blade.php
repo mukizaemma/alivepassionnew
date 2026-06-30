@@ -157,7 +157,7 @@
                                             @endforeach
                                         </ul>
                                     </li>
-                                    <li class="has-dropdown"><a href="{{ route('campaigns') }}">Get Involved</a>
+                                    <li class="has-dropdown"><a href="{{ $setting->getDonateUrl() }}">Get Involved</a>
                                         <ul class="submenu tp-submenu">
                                             @foreach($campains as $rs)
                                                 <li><a href="{{route('campaign',$rs->slug)}}">{{$rs->title}}</a></li>
@@ -183,7 +183,7 @@
                                     </li>                                     --}}
                                     <li>
                                         <div class="tp-header-3__btn d-none d-md-block">
-                                            <a class="tp-btn" href="{{ route('campaigns') }}">Donate Now</a>
+                                            <a class="tp-btn" href="{{ $setting->getDonateUrl() }}">Donate Now</a>
                                         </div>
                                     </li>  
                                     <li>
@@ -279,7 +279,7 @@
                             <div class="tp-footer__widget footer-2-col-4 ">
                                 <div class="tp-footer__donate-box tp-copyright__bg p-3">
                                     <h4 class="tp-footer__donate-title-sm">We don’t just give <br> we walk with them until they rise</h4>
-                                    <a class="tp-btn theme-2-bg" href="{{ route('campaigns') }}">Get Involved</a>
+                                    <a class="tp-btn theme-2-bg" href="{{ $setting->getDonateUrl() }}">Get Involved</a>
                                 </div>
                             </div>
                         </div>
