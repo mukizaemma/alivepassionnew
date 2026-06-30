@@ -1,0 +1,262 @@
+/* Alive Passion — landing page enhancements */
+
+:root {
+  --alive-green: #1e5f3d;
+  --alive-green-dark: #164a2f;
+  --alive-gold: #f5b942;
+  --alive-shadow: 0 12px 40px rgba(30, 95, 61, 0.12);
+}
+
+/* ── Hero ─────────────────────────────────────────────── */
+
+.custom-banner {
+  width: 100%;
+  margin: 0;
+}
+
+@media (min-width: 992px) {
+  .custom-banner {
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+  }
+}
+
+.custom-banner .tp-slider-3__wrapper {
+  width: 100%;
+  max-width: 100%;
+}
+
+.alive-hero-slide {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 78vh;
+  height: auto !important;
+  padding: 120px 0 90px !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  border-radius: 0 !important;
+  overflow: hidden;
+}
+
+.alive-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 35, 22, 0.78) 0%,
+    rgba(30, 95, 61, 0.55) 45%,
+    rgba(0, 0, 0, 0.45) 100%
+  );
+  z-index: 1;
+}
+
+.alive-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+}
+
+.alive-hero-eyebrow {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.35rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--alive-gold);
+  background: rgba(245, 185, 66, 0.15);
+  border-radius: 999px;
+}
+
+.alive-hero-title {
+  color: #fff !important;
+  font-size: clamp(1.75rem, 4.5vw, 3.25rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  margin-bottom: 1.75rem !important;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
+}
+
+.alive-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2rem !important;
+  font-weight: 700;
+  border-radius: 999px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.alive-hero-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 767px) {
+  .alive-hero-slide {
+    min-height: 62vh;
+    padding: 100px 0 70px !important;
+  }
+
+  .alive-hero-content {
+    padding: 1.5rem 1.25rem;
+    border-radius: 14px;
+  }
+}
+
+/* ── Section titles ───────────────────────────────────── */
+
+.alive-section-title {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.75rem;
+}
+
+.alive-section-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 64px;
+  height: 4px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--alive-green), var(--alive-gold));
+}
+
+/* ── About & mission cards ─────────────────────────────── */
+
+.alive-about-text {
+  font-size: 1.1rem;
+  line-height: 1.85;
+  color: #4a5568;
+  text-align: justify;
+}
+
+.alive-mission-card {
+  flex: 1;
+  padding: 2rem 1.5rem;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid rgba(30, 95, 61, 0.1);
+  box-shadow: var(--alive-shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.alive-mission-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 48px rgba(30, 95, 61, 0.16);
+}
+
+.alive-mission-card .tp-about-4__list-icon i {
+  font-size: 2.5rem;
+  color: var(--alive-gold);
+}
+
+.alive-mission-card .tp-about-4__title-sm {
+  margin: 0.75rem 0;
+  color: var(--alive-green);
+}
+
+.alive-mission-card p {
+  margin: 0;
+  line-height: 1.7;
+  color: #5a6578;
+}
+
+/* ── Program & testimonial cards ─────────────────────── */
+
+.alive-card-grid .tp-blog-2__item {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(30, 95, 61, 0.08);
+  box-shadow: var(--alive-shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  height: 100%;
+}
+
+.alive-card-grid .tp-blog-2__item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(30, 95, 61, 0.15);
+}
+
+.alive-card-grid .tp-blog-2__thumb img {
+  transition: transform 0.4s ease;
+}
+
+.alive-card-grid .tp-blog-2__item:hover .tp-blog-2__thumb img {
+  transform: scale(1.04);
+}
+
+.alive-card-grid .tp-donate__title {
+  color: var(--alive-green) !important;
+}
+
+/* ── CTA band ─────────────────────────────────────────── */
+
+.alive-cta-band .tp-cta-2__bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(30, 95, 61, 0.88), rgba(10, 35, 22, 0.82));
+  z-index: 1;
+}
+
+.alive-cta-band .tp-cta-2__content {
+  position: relative;
+  z-index: 2;
+}
+
+.alive-cta-band .tp-cta-2__title {
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+.alive-cta-btn {
+  border-radius: 999px !important;
+  padding: 0.9rem 2rem !important;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+/* ── Founder section ──────────────────────────────────── */
+
+.alive-founder-panel {
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: var(--alive-shadow);
+}
+
+.alive-founder-panel .tp-about-4__text p {
+  line-height: 1.85;
+  color: #4a5568;
+}
+
+/* ── Partners ─────────────────────────────────────────── */
+
+.alive-partners .tp-brand-2__item img {
+  filter: grayscale(30%);
+  opacity: 0.85;
+  transition: filter 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+}
+
+.alive-partners .tp-brand-2__item:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.05);
+}

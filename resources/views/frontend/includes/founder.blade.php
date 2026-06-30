@@ -9,9 +9,9 @@
             <div class="row">
                 <div class="offset-xl-6 offset-lg-6 col-xl-6 col-lg-6 wow tpfadeRight" data-wow-duration=".9s"
                 data-wow-delay=".5s">
-                    <div class="tp-about-4__left-side">
+                    <div class="tp-about-4__left-side alive-founder-panel">
                         <div class="tp-about-4__section-title">
-                            <h4 class="tp-section-title">The Founder</h4>
+                            <h4 class="tp-section-title alive-section-title">The Founder</h4>
                         </div>
                         <div class="tp-about-4__content">
                             <div class="tp-about-4__text">

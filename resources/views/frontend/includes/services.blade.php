@@ -1,9 +1,9 @@
-    <div class="tp-blog-2__area tp-blog-2__space">
+    <div class="tp-blog-2__area tp-blog-2__space alive-card-grid">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="tp-blog-2__section-title pb-50 text-center">
-                        <h4 class="tp-section-title">Our Programs</h4>
+                        <h4 class="tp-section-title alive-section-title">Our Programs</h4>
                     </div>
                 </div>
             </div>

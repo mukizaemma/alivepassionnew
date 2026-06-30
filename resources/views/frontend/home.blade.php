@@ -14,8 +14,8 @@
                 <div class="offset-xl-12 wow tpfadeRight" data-wow-duration=".9s"
                 data-wow-delay=".5s">
                     <div class="tp-about-4__left-side">
-                        <div class="tp-about-4__section-title">
-                            <h4 class="tp-section-title">About Us</h4>
+                        <div class="tp-about-4__section-title text-center">
+                            <h4 class="tp-section-title alive-section-title">About Us</h4>
                         </div>
                         <div class="tp-about-4__content">
                             <div class="tp-about-4__text">
@@ -24,11 +24,11 @@
                                 $words = Str::limit($about->description, 400, '...');
                                 @endphp
 
-                                <p style="font-size: 20px; font-wight:700; text-align:justify" > {{ $words }} </p>
+                                <p class="alive-about-text">{{ $words }}</p>
 
                                 @if(strlen($about->description) > 400)
                                 
-                                <div class="tp-about-3__btn">
+                                <div class="tp-about-3__btn text-center">
                                     <a class="tp-btn" href="{{route('backgroundDetails')}}">Read More</a>
                                 </div>
                                 @endif
@@ -40,10 +40,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="tp-about-4__wraper pb-45 d-flex justify-content-between">
+                <div class="tp-about-4__wraper pb-45 d-flex justify-content-between gap-4 flex-wrap">
 
-                    <div class="tp-about-4__list-item d-flex align-items-start">
-                    <div class="tp-about-4__list-content" style="display: flex; flex-direction: column; align-items: center; text-align: start;">
+                    <div class="tp-about-4__list-item d-flex align-items-start alive-mission-card">
+                    <div class="tp-about-4__list-content text-center w-100">
                         <div class="tp-about-4__list-icon">
                             <i class="flaticon-mission"></i>
                         </div>
@@ -52,8 +52,8 @@
                     </div>
 
                     </div>
-                    <div class="tp-about-4__list-item d-flex align-items-start">
-                    <div class="tp-about-4__list-content" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <div class="tp-about-4__list-item d-flex align-items-start alive-mission-card">
+                    <div class="tp-about-4__list-content text-center w-100">
                         <div class="tp-about-4__list-icon">
                             <i class="flaticon-vision"></i>
                         </div>
@@ -62,7 +62,7 @@
                     </div>
 
                     </div>
-                </div> 
+                </div>
             </div>
         </div>
     </div>

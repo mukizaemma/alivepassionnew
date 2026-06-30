@@ -1,8 +1,8 @@
-        <div class="tp-brand-2__area">
+        <div class="tp-brand-2__area alive-partners">
             <div class="container">
                 <div class="tp-brand-2__border">
-                        <div class="tp-about-4__section-title">
-                            <h4 class="tp-section-title">Our Partners</h4>
+                        <div class="tp-about-4__section-title text-center">
+                            <h4 class="tp-section-title alive-section-title">Our Partners</h4>
                         </div>
                     <div class="row">
                         <div class="col-12">

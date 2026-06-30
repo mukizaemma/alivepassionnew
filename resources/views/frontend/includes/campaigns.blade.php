@@ -7,7 +7,7 @@
                 <div class="row align-items-end">
                     <div class="col-xl-8 col-lg-8 col-md-8">
                         <div class="tp-donate__section-title">
-                            <h4 class="tp-section-title">Our Causes</h4>
+                            <h4 class="tp-section-title alive-section-title">Our Causes</h4>
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-4 col-md-4">

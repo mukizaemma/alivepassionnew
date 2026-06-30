@@ -1,9 +1,9 @@
-    <div class="tp-blog-2__area tp-blog-2__spaces">
+    <div class="tp-blog-2__area tp-blog-2__spaces alive-card-grid">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="tp-blog-2__section-title pb-50 text-center">
-                        <h4 class="tp-section-title">Testimonials</h4>
+                        <h4 class="tp-section-title alive-section-title">Testimonials</h4>
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                                 $words = Str::limit($rs->testimony, 100, '...');
                                 @endphp
 
-                                <p style="font-size: 20px; font-wight:700; text-align:justify" > {{ $words }} </p>
+                                <p class="alive-about-text">{{ $words }}</p>
 
                                 @if(strlen($rs->testimony) > 100)
                                 <a href="{{ route('testimony',['id'=>$rs->id]) }}">
