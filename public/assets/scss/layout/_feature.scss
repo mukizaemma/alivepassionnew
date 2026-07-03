@@ -1,0 +1,243 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  12. feature css start
+/*----------------------------------------*/
+.tp-feature{
+    &__space{
+        padding-top: 130px;
+        padding-bottom: 90px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    &__wraper{
+        padding: 30px 30px 40px 50px;
+        background-color: var(--tp-common-white);
+        position: relative;
+        overflow: hidden;
+        transition: all 500ms ease;
+        @media #{$lg}{
+            padding: 30px 25px 40px 25px;
+        }  
+        @media #{$xs}{
+            padding: 30px 25px 40px 25px;
+        }  
+        &:hover{
+            transform: translateY(-10px);
+            &::after{
+                opacity: 1;
+                visibility: visible;
+                height: 100%;
+            }
+            & .tp-feature__title-sm{
+                color: var(--tp-common-white);
+            }
+            & .tp-feature__text{
+                & p {
+                    color: var(--tp-theme-3);
+                }
+            }
+            & .tp-feature__icon{
+                & span {
+                    background-color: var(--tp-common-white);
+                    & i {
+                        color: var(--tp-theme-1);
+                    }
+                }
+            }
+            & .tp-feature__shape-1{
+                opacity:1;
+                visibility:visible;
+                z-index: 1;
+                top: -10px;
+            }
+            & .tp-feature__shape-2{
+                opacity:1;
+                visibility:visible;
+                z-index: 1;
+                right: 0;
+                @media #{$lg} {
+                    right:-30px;
+                }
+            }
+        }
+        &::after{
+            content: '';
+            top: 0;
+            left: 0;
+            height:0%;
+            width: 100%;
+            background-color: var(--tp-theme-2);
+            position: absolute;
+            transition: all 500ms ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+    &__content{
+        padding-bottom: 2px;
+    }
+    &__title-sm{
+        font-size: 24px;
+        font-weight: 800;
+        line-height: 1.4;
+        margin-bottom: 0;
+        transition: .3s;
+        @media #{$lg}{
+            font-size: 20px;
+        }  
+        @media #{$xs}{
+            font-size: 20px;
+        }  
+    }
+    &__text{
+        & p {
+            line-height: 30px;
+            margin-bottom: 0;
+            transition: .3s;
+            @media #{$lg}{
+                font-size: 14px;
+            }  
+            @media #{$xs}{
+                font-size: 14px;
+            }  
+        }
+    }
+    &__icon{
+        & span {
+            width: 90px;
+            height: 90px;
+            line-height: 105px;
+            border-radius:50%;
+            text-align: center;
+            background-color: var(--tp-theme-1);
+            display: inline-block;
+            font-size: 50px;
+            color: var(--tp-common-white);
+            transition: .3s;
+            @media #{$lg}{
+                width: 70px;
+                height: 70px;
+                line-height: 80px;
+                font-size: 31px;
+            }  
+            @media #{$xs}{
+                width: 70px;
+                height: 70px;
+                line-height: 80px;
+                font-size: 31px;
+            }  
+            & i { 
+                transition: .3s;
+
+            }
+        }
+    }
+    &__shape-1{
+        position: absolute;
+        right: 0px;
+        top: -80px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 500ms ease;
+        @media #{$lg}{
+            right: -51px;
+            top: -8px;
+        } 
+        @media #{$xs}{
+            display: none;
+        } 
+    }
+    &__shape-2{
+        position: absolute;
+        right: -70px;
+        top: -20px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 900ms ease;
+        @media #{$xs}{
+            display: none;
+        } 
+    }
+}
+.tp-feature-2{
+    &__bg {
+        position: relative;
+        opacity: 96%;
+        &::after{
+            position: absolute;
+            top: 0;
+            left: 0;
+            content: '';
+            height: 100%;
+            width: 100%;
+            background-color: rgba(2, 43, 41, 0.961);
+        }
+    }
+    &__item{
+        background-color: rgba(242, 247, 247, 0.122);
+        padding: 40px 15px;
+        padding-top: 35px;
+        transition: all 0.3s linear;
+        position: relative;
+        z-index: 11;
+        &::after{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            content: "";
+            background-color: var(--tp-common-white);
+            transform: scaleX(0.7) rotateX(20deg);
+            opacity: 0;
+            transition: all 0.4s linear;
+            z-index: -1;
+        }
+        &:hover{
+            &::after{
+                transform: scaleX(1.0) rotateX(0deg);
+                transition: all 0.4s linear;
+                opacity: 1;
+            }
+            & .tp-feature-2__title-sm{
+                color: var(--tp-theme-1);
+            }
+            & .tp-feature-2__icon{
+                & span {
+                    color: var(--tp-common-orange);
+                }
+            }
+        }
+    }
+    &__title-sm{
+        font-size: 20px;
+        color: var(--tp-common-white);
+        margin-bottom: 0;
+        transition: all 0.3s linear;
+        @media #{$lg,$md,$xs}{
+            font-size: 17px;
+        }
+    }
+    &__icon{
+        margin-bottom: 15px;
+        & span {
+            transition: all 0.3s linear;
+            font-size: 65px;
+            color: var(--tp-common-white);
+            line-height: 0;
+            padding-bottom: 12px;
+            display: inline-block;
+            @media #{$lg}{
+                font-size: 55px;
+            }
+            @media #{$md}{
+                font-size: 63px;
+            }
+            @media #{$xs}{
+                font-size: 55px;
+            }
+        }
+    }
+}

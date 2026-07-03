@@ -1,0 +1,95 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  09. error css start
+/*----------------------------------------*/
+.tp-error{
+    &__thumb{
+        padding-bottom: 50px;
+        & img {
+            @media #{$xxxl}{
+                max-width: 50%;
+            }
+            @media #{$xxl}{
+                max-width: 40%;
+            }
+            @media #{$xl}{
+                max-width: 40%;
+            }
+            @media #{$lg}{
+                max-width: 50%;
+            }
+            @media #{$md}{
+                max-width: 50%;
+            }
+            @media #{$xs}{
+                max-width: 100%;
+            }
+            @media #{$sm}{
+                max-width: 80%;
+            }
+        }
+    }
+    &__title{
+        font-size: 50px;
+        font-weight: 800;
+        padding-bottom:45px;
+        @media #{$xxxl}{
+            font-size: 40px;
+        }
+        @media #{$xxl}{
+            font-size: 38px;
+        }
+        @media #{$xl}{
+            font-size: 35px;
+        }
+        @media #{$lg,$md}{
+            font-size: 32px;
+        }
+        @media #{$xs}{
+            font-size: 30px;
+        }
+    }
+    &__form-box {
+        width: 630px;
+        margin-bottom: 30px;
+        position: relative;
+        display: inline-block;
+        @media #{$lg}{
+            width: 530px;
+        }
+        @media #{$md,$xs}{
+            width: 430px;
+        }
+        @media #{$xs}{
+            width:100%;
+        }
+        @media #{$sm}{
+            width:530px;
+        }
+        & form {
+            & input {
+                background-color: rgb(242, 247, 247);
+                padding: 18px 50px;
+                padding-right: 100px;
+                font-size: 16px;
+                transition: .3s;
+                border: 1px solid transparent;
+                &:focus{
+                    border: 1px solid var(--tp-common-orange);
+                }
+            }
+        }
+    }
+    &__search-box{
+        position: absolute;
+        right:37px;
+        top: 52%;
+        transform: translateY(-50%);
+        font-size: 17px;
+        color: var(--tp-theme-1);
+    }
+    &__btn{
+        line-height: 0;
+    }
+}

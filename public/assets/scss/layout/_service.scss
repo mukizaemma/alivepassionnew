@@ -1,0 +1,179 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  17. service css start 
+/*----------------------------------------*/
+.tp-service-3{
+    &__space{
+        padding-top: 155px;
+        padding-bottom: 120px;
+        @media #{$lg}{
+            padding-bottom: 90px;
+        }
+        @media #{$md}{
+            padding-bottom: 90px;
+            padding-top: 90px;
+        }
+        @media #{$xs}{
+            padding-bottom: 90px;
+            padding-top: 90px;
+        }
+    }
+    &__item{
+        &:hover {
+            & .tp-service-3__thumb-box{
+                &::after{
+                    opacity:1;
+                    visibility: visible;
+                    height: 100%;
+
+                }
+            }
+            & .tp-service-3__thumb{
+                & img {
+                    transform: scale(1.1) rotate(-2deg);
+                }
+            }
+            & .tp-service-3__icon{
+                & span {
+                    color: var(--tp-common-white);
+                }
+                &::after{
+                    opacity: 1;
+                    transform: scaleY(1);
+                }
+            }
+            & .tp-service-3__shape{
+                opacity: 1;
+                visibility: visible;
+                right: -56px;
+            }
+        }
+    }
+    &__thumb{
+        overflow: hidden;
+        & img {
+            width: 100%;
+            transition: all 500ms ease;
+        }
+    }
+    &__thumb-box{
+        position: relative;
+        &::after{
+            content: '';
+            top: 0;
+            left:0%;
+            height:30%;
+            width: 100%;
+            background-color: rgba(7, 132, 128, 0.851);
+            position: absolute;
+            transition: all 500ms ease;
+            opacity: 0;
+            visibility: hidden;
+          }
+    }
+    &__content{
+        position: relative;
+        overflow: hidden;
+        background-color: var(--tp-common-white);
+        padding: 60px 20px;
+        padding-bottom: 35px;
+        box-shadow: 2px 3.464px 40px 0px rgba(14, 5, 1, 0.04);
+        & a{
+            font-weight: 800;
+            font-size: 14px;
+            color: var(--tp-theme-1);
+            transition: all 500ms ease;
+            &:hover {
+                color: var(--tp-common-orange);
+            }
+        }
+        & p {
+            padding-bottom: 14px;
+            @media #{$xl}{
+                font-size: 15px;
+            }
+            @media #{$lg,$md,$xs}{
+                font-size: 14px;
+                & br {
+                    display: none;
+                }
+            }
+            @media #{$sm}{
+                font-size: 16px;
+            }
+        }
+    }
+    &__title-sm{
+        font-size: 24px;
+        padding-bottom: 20px;
+        transition: all 500ms ease;
+        &:hover {
+            color: var(--tp-common-orange);
+        }
+        @media #{$xl}{
+           font-size: 22px;
+        }
+    }
+    &__icon{
+        position: absolute;
+        z-index: 1;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -17%;
+        height: 80px;
+        line-height:91px;
+        text-align: center;
+        width: 80px;
+        border-radius: 50%;
+        background-color: var(--tp-grey-1);
+        overflow: hidden;
+        z-index: 1;
+        &::after{
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background-color: var(--tp-common-orange);
+            transition-delay: .1s;
+            transition-timing-function: ease-in-out;
+            transition-duration: .4s;
+            transition-property: all;
+            opacity: 1;
+            transform-origin: top;
+            transform-style: preserve-3d;
+            transform: scaleY(0);
+            z-index: -1;
+        }
+        @media #{$lg}{
+            bottom: -15%;
+        }
+        @media #{$md}{
+            bottom: -13%;
+        }
+        @media #{$xs}{
+            bottom: -14%;
+        }
+        @media #{$sm}{
+            bottom: -9%;
+        }
+        @media only screen and (min-width:440px) and (max-width:575px){
+            bottom: -11%;
+        }
+        & span {
+            font-size: 40px;
+            color: var(--tp-theme-1);
+            transition: all 500ms ease;
+        }
+    }
+    &__shape{
+        position: absolute;
+        right: -100px;
+        bottom: -70px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 500ms ease;
+    }
+}

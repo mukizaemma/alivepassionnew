@@ -1,0 +1,214 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  14. gallery css start
+/*----------------------------------------*/
+.tp-gallery{
+    &__plr{
+        padding: 0 125px;
+        @media #{$xxxl,$xxl,$xl,$lg,$md,$xs}{
+            padding: 0;
+        }
+    }
+    &__thumb{
+        overflow: hidden;
+        @media #{$lg,$md,$xs}{
+            margin-bottom: 30px;
+        }
+        & img {
+            width: 100%;
+            transition: all 700ms ease;
+        }
+        &:hover{
+            & img {
+                transform: scale(1.1);
+            }
+            & .tp-gallery__thumb-overly{
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+    &__thumb-overly{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        transform: scale(.9);
+        background-color: rgba(254, 126, 76, 0.949);
+        overflow: hidden;
+        transition: all 500ms ease;
+        opacity: 0;
+        visibility: hidden;
+    }
+    &__overly-text{
+        & span {
+            color: var(--tp-common-white);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+    }
+    &__title-sm{
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--tp-common-white);
+        margin-bottom: 0;
+        @media #{$xl}{
+            font-size: 20px;
+        }
+    }
+    &__shape{
+        position: absolute;
+        left: -13px;
+        bottom: -8px;
+    }
+}
+.tp-gallery-2{
+    &__item {
+        position: relative;
+        overflow: hidden;
+        &:hover{
+            & img {
+                transform: scale(1.1);
+            }
+            &::after{
+                opacity: 1;
+                visibility: visible;
+                width: 100%;
+                right: auto;
+                left: 0;
+            }
+            & .tp-gallery-2__icon-box{
+                opacity:1;
+                visibility: visible;
+            }
+        }
+        & img {
+            width: 100%;
+            transition: .9s;
+        }
+        &::after{
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: auto;
+            width: 0%;
+            height: 100%;
+            background-color: rgba(254, 126, 76, 0.902);
+            opacity: 0;
+            visibility: hidden;
+            transition: .9s;
+        }
+    }
+    &__icon-box{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        z-index: 1;
+        opacity: 0;
+        visibility: hidden;
+        transition: .7s;
+    }
+    &__icon{
+        position: absolute;
+        top: 50%;
+        left: 46%;
+        transform: translate(-50%,-50%);
+        & i {
+            font-size: 25px;
+            color: var(--tp-common-white);
+        }
+    }
+}
+.tp-gallery-3{
+    &__space{
+        padding: 0 162px;
+        margin-bottom: 90px;
+        @media #{$xxl}{
+            padding: 0 40px;
+        }
+        @media #{$xl,$lg,$md,$xs}{
+            padding: 0;
+        }
+    }
+    &__item{
+        position: relative;
+        & img {
+            width: 100%;
+            transition: 1s;
+        }
+        &:hover {
+            & img {
+                opacity: 20%;
+            }
+            &::after{
+                opacity: 1;
+                visibility: visible;
+                -webkit-transform: scaleY(1) translateZ(0px);
+                transform: scaleY(1) translateZ(0px);
+            }
+            & .tp-gallery-3__icon{
+                -webkit-transform: scale(1) translate(-50%,-50%);
+                transform: scale(1) translate(-50%,-50%);
+                transition-delay: 300ms;
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+        &::after{   
+            background-color: rgba(30, 55, 55, 0.8);
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            opacity: 0;
+            visibility: hidden;
+            -webkit-transform-origin: top center;
+            transform-origin: top center;
+            -webkit-transform: scaleY(0) translateZ(100px);
+            transform: scaleY(0) translateZ(100px);
+            -webkit-transition: opacity 500ms ease, visibility 500ms ease, -webkit-transform 700ms ease;
+            transition: opacity 500ms ease, visibility 500ms ease, -webkit-transform 700ms ease;
+            transition: opacity 500ms ease, visibility 500ms ease, transform 700ms ease;
+            transition: opacity 500ms ease, visibility 500ms ease, transform 700ms ease, -webkit-transform 700ms ease;
+        }
+    }
+    &__icon{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: scale(0) translate(-50%,-50%);
+        transform: scale(0) translate(-50%,-50%);
+        -webkit-transition: all 300ms ease;
+        transition: all 300ms ease;
+        transition-delay: 0s;
+        z-index: 3;
+        visibility: hidden;
+        opacity: 0;
+        & a {
+            display: inline-block;
+            position: relative;
+            &::after{
+                content: '';
+                display: inline-block;
+                height: 60px;
+                line-height: 81px;
+                width: 60px;
+                border-radius: 50%;
+                background-color: var(--tp-common-orange);
+            }
+            & svg {
+                position: absolute;
+                top: 7px;
+                left: 53px;
+                transform: translate(-50%, -50%) rotate(0);
+                transform-origin: left bottom;
+            }
+        }
+    }
+}

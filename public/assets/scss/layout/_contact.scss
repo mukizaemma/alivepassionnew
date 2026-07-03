@@ -1,0 +1,215 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  06. contact css start
+/*----------------------------------------*/
+.tp-contact-form{
+    &__space{
+        padding-top: 120px;
+        padding-bottom: 130px;
+    }
+    &__subtitle{
+        color: var(--tp-common-orange);
+        font-weight: 700;
+        display: inline-block;
+        padding-bottom: 10px;
+    }
+    &__left-box{
+        @media #{$md,$xs}{
+            padding-bottom:50px;
+        }
+        & p {
+            margin-bottom: 0;
+            padding-bottom: 45px;
+            @media #{$lg,$md,$xs}{
+                font-size: 14px;
+                & br {
+                    display: none;
+                }
+            }
+        }
+    }
+    &__social-box{
+        & a {
+            &:not(:last-child){
+                margin-right: 10px;
+            }
+            font-size: 17px;
+            height: 40px;
+            line-height: 38px;
+            text-align: center;
+            width: 40px;
+            color: var(--tp-theme-1);
+            border-radius: 50%;
+            border: 1px solid #e6e9e9;
+            display: inline-block;
+            transition: all 500ms ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            &::after{
+                position: absolute;
+                content: "";
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 100%;
+                background-color: var(--tp-common-orange);
+                transition-delay: .1s;
+                transition-timing-function: ease-in-out;
+                transition-duration: .4s;
+                transition-property: all;
+                opacity: 1;
+                transform-origin: top;
+                transform-style: preserve-3d;
+                transform: scaleY(0);
+                z-index: -1;
+            }
+            &:hover {
+                color: var(--tp-common-white);
+                border: 1px solid transparent;
+                &::after{
+                    opacity: 1;
+                    transform: scaleY(1);
+                }
+            }
+        }
+    }
+    &__form-box{
+        background-color: var(--tp-grey-1);
+        padding: 60px 50px;
+        @media #{$xs}{
+            padding: 30px 15px;
+        }
+        @media #{$sm}{
+            padding: 50px 25px;
+        }
+    }
+    &__input-box{
+        & input {
+            color: var(--tp-common-black);
+            border: 1px solid transparent;
+            transition: .3s;
+            &:focus {
+                border: 1px solid var(--tp-common-orange);
+            }
+        }
+    }
+    &__textarea-box{
+        & textarea {
+            height: 150px;
+            resize: none;
+            border: none;
+            padding: 30px;
+            padding-top: 25px;
+            font-size: 14px;
+            width: 100%;
+            color: var(--tp-common-black);
+            transition: .3s;
+            border: 1px solid transparent;
+            &:focus {
+                border: 1px solid var(--tp-common-orange);
+            }
+        }
+    }
+    &__button{
+        line-height: 0;
+    }
+}
+.tp-contact{
+    &__bg{
+        background-color: var(--tp-theme-2);
+        padding:50px 55px;
+        padding-bottom: 20px;
+        @media #{$lg}{
+            padding:50px 20px;
+            padding-bottom: 20px;
+        }
+        @media #{$md,$xs}{
+            padding:50px 25px;
+            padding-bottom: 20px;
+        }
+    }
+    &__item {
+        margin-bottom: 30px;
+        &:hover {
+            & .tp-contact__icon {
+                & span {
+                    background-color: var(--tp-common-orange);
+                    color: var(--tp-common-white);
+                }
+            }
+        }
+    }
+    &__icon{
+        & span {
+            margin-right: 25px;
+            font-size: 40px;
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+            line-height: 91px;
+            text-align: center;
+            display: inline-block;
+            background-color: var(--tp-common-white);
+            color: var(--tp-theme-1);
+            transition: .3s;
+            @media #{$lg}{
+                font-size: 34px;
+                height: 70px;
+                width: 70px;
+                line-height: 81px;
+                margin-right: 20px;
+            }
+            @media #{$xs}{
+                font-size: 20px;
+                height: 50px;
+                width: 50px;
+                line-height: 55px;
+                margin-right: 20px;
+            }
+            @media #{$sm}{
+                font-size: 30px;
+                height: 70px;
+                width:70px;
+                line-height: 81px;
+                margin-right: 30px;
+            }
+        }
+    }
+    &__text{
+        & a{
+            color: var(--tp-common-white);
+            display: block;
+            padding-bottom: 10px;
+            @media #{$xl}{
+                font-size: 15px;
+            }
+            @media #{$lg}{
+                font-size: 14px;
+            }
+            @media #{$xs}{
+                font-size: 14px;
+            }
+            @media #{$sm}{
+                font-size: 15px;
+            }
+            &:last-child{
+                padding-bottom: 0;
+            }
+        }
+    }
+    &__wrapper {
+        @media #{$md}{
+            flex-wrap: wrap;
+        }
+    }
+}
+.tp-location{
+    &__info-box{
+        line-height: 0;
+        & iframe {
+           width: 100%;
+        }
+    }
+}

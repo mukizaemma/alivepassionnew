@@ -1,0 +1,221 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  15. mission css start
+/*----------------------------------------*/
+.tp-mission-2 {
+    &__space{
+        padding: 120px 0;
+        @media #{$xs} {
+            padding: 70px 0;
+        }
+    }
+    &__plr {
+        padding-left: 375px;
+        padding-right: 195px;
+        @media #{$xxxl}{
+            padding-left:215px;
+            padding-right:90px;
+        }
+        @media #{$xxl}{
+            padding-left:115px;
+            padding-right:70px;
+        }
+        @media #{$xl}{
+            padding-left:45px;
+            padding-right:50px;
+        }
+        @media #{$lg}{
+            padding-left:30px;
+            padding-right:50px;
+        }
+        @media #{$md}{
+            padding-left:40px;
+            padding-right:30px;
+        }
+        @media #{$xs} {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+    &__shape {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+    &__wrapper {
+        margin-left: -95px;
+        @media #{$xs}{
+            margin-left: 0px;
+        }
+    }
+    &__item {
+        padding: 40px 30px;
+        padding-bottom: 35px;
+        position: relative;
+        overflow: hidden;
+        z-index: 2;
+        background-color: var(--tp-common-white);
+        transition-delay: .1s;
+        transition-timing-function: ease-in-out;
+        transition-duration: .5s;
+        transition-property: all;
+        &:hover {
+            background-color: var(--tp-theme-1);
+            & .tp-mission-2__single-bg{
+                transform: scaleY(1.0);
+            }
+            & .tp-mission-2__title-sm {
+                color: var(--tp-common-white);
+            }
+            & .tp-mission-2__text {
+                & p {
+                    color: var(--tp-common-white);
+                }
+            }
+            & .tp-mission-2__icon {
+                & span {
+                    color: var(--tp-common-white);
+                }
+            }
+            & .tp-mission-2__shape-box {
+                &::after{
+                    background-color: var(--tp-common-orange);
+                }
+            }
+            & .tp-mission-2__arrow {
+                &::after{
+                    background-color: var(--tp-common-orange);
+                }
+            }
+        }
+    }
+    &__single-bg{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color:rgba(30, 55, 55, 0.059);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        background-blend-mode: luminosity;
+        transition-timing-function: ease-in-out;
+        transition: .5s;
+        transition-property: all;
+        transform-origin: top;
+        transform-style: preserve-3d;
+        transform: scaleY(0);
+        z-index: -1;
+    }
+    &__icon {
+        padding-bottom: 20px;
+        & span {
+            font-size: 65px;
+            color: var(--tp-common-orange);
+            line-height: 0;
+            transition-delay: .1s;
+            transition-timing-function: ease-in-out;
+            transition-duration: .5s;
+            transition-property: all;
+        }
+    }
+    &__left-text {
+        & p {
+            padding-bottom: 15px;
+            transition-delay: .1s;
+            transition-timing-function: ease-in-out;
+            transition-duration: .5s;
+            transition-property: all;
+            @media #{$xl}{
+                padding-right: 100px;
+                font-size: 15px;
+                & br {
+                    display: none;
+                }
+            }
+            @media #{$lg}{
+                font-size: 14px;
+            }
+            @media #{$md}{
+                font-size: 14px;
+                padding-right: 100px;
+                & br {
+                    display: none;
+                }
+            }
+            @media #{$xs}{
+                font-size: 13px;
+                padding-right: 0;
+                & br {
+                    display: none;
+                }
+            }
+        }
+    }
+    &__title-sm {
+        font-size: 24px;
+        font-weight: 800;
+        padding-bottom: 10px;
+        transition-delay: .1s;
+        transition-timing-function: ease-in-out;
+        transition-duration: .5s;
+        transition-property: all;
+    }
+    &__text {
+        & p {
+            margin-bottom: 0;
+            font-size: 15px;
+            transition-delay: .1s;
+            transition-timing-function: ease-in-out;
+            transition-duration: .5s;
+            transition-property: all;
+            @media #{$xxxl,$xxl,$xl,$lg,$md,$xs}{
+                & br {
+                    display: none;
+                }
+            }
+        }
+    }
+    &__shape-box {
+        position: absolute;
+        top: 0;
+        right: 0;
+        &::after{
+            content: '';
+            top: -98px;
+            right: -83px;
+            position: absolute;
+            height: 166px;
+            width: 166px;
+            background-color: var(--tp-theme-2);
+            border-radius: 50%;
+            transition:.5s;
+        }
+    }
+    &__arrow {
+        position: relative;
+        z-index: 11;
+        display: inline-block;
+        padding-right: 20px;
+        padding-top: 11px;
+        font-size: 20px;
+        color: var(--tp-common-white);
+    }
+    &__left-box {
+        @media #{$xs}{
+            padding-bottom: 50px;
+        }
+    }
+    &__section-box{
+        & .tp-section-title{
+            @media #{$md}{
+                & br {
+                    display: block;
+                }
+            }
+        }
+    }
+}
