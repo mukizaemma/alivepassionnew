@@ -16,6 +16,13 @@ class Setting extends Model
         return $this->donate_url ?: self::DEFAULT_DONATE_URL;
     }
 
+    public static function donateUrl(?self $setting = null): string
+    {
+        $setting = $setting ?: static::query()->first();
+
+        return $setting ? $setting->getDonateUrl() : self::DEFAULT_DONATE_URL;
+    }
+
     public function getWhatsappNumber(): ?string
     {
         $phone = $this->phone ?: $this->phone1 ?: $this->phone2;

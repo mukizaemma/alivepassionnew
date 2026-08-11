@@ -95,7 +95,7 @@
             </div>
             
             <div class="tpoffcanvas__donate mb-4">
-                <a class="tp-btn w-100" href="{{ $setting->getDonateUrl() }}" target="_blank" rel="noopener noreferrer">Donate</a>
+                <a class="tp-btn w-100" href="{{ optional($setting)->getDonateUrl() ?? \App\Models\Setting::DEFAULT_DONATE_URL }}" target="_blank" rel="noopener noreferrer">Donate</a>
             </div>
             <div class="tpoffcanvas__social">
                 <div class="row align-items-center">
@@ -194,7 +194,7 @@
                                     </li>                                     --}}
                                     <li>
                                         <div class="tp-header-3__btn d-none d-md-block">
-                                            <a class="tp-btn" href="{{ $setting->getDonateUrl() }}" target="_blank" rel="noopener noreferrer">Donate</a>
+                                            <a class="tp-btn" href="{{ optional($setting)->getDonateUrl() ?? \App\Models\Setting::DEFAULT_DONATE_URL }}" target="_blank" rel="noopener noreferrer">Donate</a>
                                         </div>
                                     </li>  
                                     <li>

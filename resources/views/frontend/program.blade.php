@@ -26,7 +26,7 @@
                                 {!! $program->description !!}
                             </div>
                             <div class="alive-program-detail__cta">
-                                <a class="tp-btn theme-2-bg" href="{{ $setting->getDonateUrl() }}" target="_blank" rel="noopener noreferrer">Get Involved</a>
+                                <a class="tp-btn theme-2-bg" href="{{ optional($setting)->getDonateUrl() ?? \App\Models\Setting::DEFAULT_DONATE_URL }}" target="_blank" rel="noopener noreferrer">Get Involved</a>
                                 <a class="alive-btn-outline alive-btn-outline--navy" href="{{ route('contacts') }}">Partner With Us</a>
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                         <div class="alive-sidebar__donate">
                             <h3>Walk with them until they rise</h3>
                             <p>Your gift fuels shelter, skills, discipleship, and care for children and families in Bugesera.</p>
-                            <a class="tp-btn theme-2-bg w-100" href="{{ $setting->getDonateUrl() }}" target="_blank" rel="noopener noreferrer">Donate Now</a>
+                            <a class="tp-btn theme-2-bg w-100" href="{{ optional($setting)->getDonateUrl() ?? \App\Models\Setting::DEFAULT_DONATE_URL }}" target="_blank" rel="noopener noreferrer">Donate Now</a>
                         </div>
 
                         @if($news->count())

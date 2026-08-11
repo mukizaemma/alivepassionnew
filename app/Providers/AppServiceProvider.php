@@ -21,18 +21,19 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        View::share('setting', $this->safeShare(fn () => Setting::first()));
+        View::share('campains', $this->safeShare(fn () => Campain::oldest()->get(), collect()));
+        View::share('partners', $this->safeShare(fn () => Partner::oldest()->get(), collect()));
+        View::share('programs', $this->safeShare(fn () => Program::ordered()->get(), collect()));
+        View::share('pageHeroes', $this->safeShare(fn () => PageHero::query()->pluck('image', 'page_key'), collect()));
+    }
+
+    protected function safeShare(callable $callback, $fallback = null)
+    {
         try {
-            View::share('setting', Setting::first());
-            View::share('campains', Campain::oldest()->get());
-            View::share('partners', Partner::oldest()->get());
-            View::share('programs', Program::ordered()->get());
-            View::share('pageHeroes', PageHero::query()->pluck('image', 'page_key'));
+            return $callback();
         } catch (\Throwable $e) {
-            View::share('setting', null);
-            View::share('campains', collect());
-            View::share('partners', collect());
-            View::share('programs', collect());
-            View::share('pageHeroes', collect());
+            return $fallback;
         }
     }
 }

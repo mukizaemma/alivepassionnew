@@ -10,7 +10,7 @@
                 @endif
                 <div class="alive-initiative__actions">
                     <a class="tp-btn" href="{{ route('backgroundDetails') }}">Learn More</a>
-                    <a class="alive-btn-outline alive-btn-outline--navy" href="{{ $setting->getDonateUrl() }}" target="_blank" rel="noopener noreferrer">Donate</a>
+                    <a class="alive-btn-outline alive-btn-outline--navy" href="{{ optional($setting)->getDonateUrl() ?? \App\Models\Setting::DEFAULT_DONATE_URL }}" target="_blank" rel="noopener noreferrer">Donate</a>
                 </div>
             </div>
             <div class="alive-equal__media wow tpfadeRight" data-wow-duration=".9s" data-wow-delay=".35s">

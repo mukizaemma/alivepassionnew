@@ -20,7 +20,7 @@
                                             </p>
                                             <div class="alive-hero-actions">
                                                 <a class="alive-btn-outline" href="#alive-about">Learn More</a>
-                                                <a class="tp-btn theme-2-bg alive-hero-cta" href="{{ $setting->getDonateUrl() }}" target="_blank" rel="noopener noreferrer">Donate</a>
+                                                <a class="tp-btn theme-2-bg alive-hero-cta" href="{{ optional($setting)->getDonateUrl() ?? \App\Models\Setting::DEFAULT_DONATE_URL }}" target="_blank" rel="noopener noreferrer">Donate</a>
                                             </div>
                                         </div>
                                     </div>

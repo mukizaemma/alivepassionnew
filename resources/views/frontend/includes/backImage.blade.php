@@ -6,7 +6,7 @@
                 <h2 class="wow tpfadeUp" data-wow-duration=".9s" data-wow-delay=".2s">{{ config('alive.cta.title') }}</h2>
                 <p class="wow tpfadeUp" data-wow-duration=".9s" data-wow-delay=".35s">{{ config('alive.cta.subtitle') }}</p>
                 <div class="alive-cta-band__actions wow tpfadeUp" data-wow-duration=".9s" data-wow-delay=".5s">
-                    <a href="{{ $setting->getDonateUrl() }}" target="_blank" rel="noopener noreferrer" class="tp-btn theme-2-bg alive-cta-btn">Donate Now</a>
+                    <a href="{{ optional($setting)->getDonateUrl() ?? \App\Models\Setting::DEFAULT_DONATE_URL }}" target="_blank" rel="noopener noreferrer" class="tp-btn theme-2-bg alive-cta-btn">Donate Now</a>
                     <a href="{{ route('contacts') }}" class="alive-btn-outline">Partner With Us</a>
                 </div>
             </div>

@@ -91,7 +91,7 @@
                                         </div>
                                     </div>
                                     <div class="tp-donate__button">
-                                        <a class="tp-grey-btn" href="{{ $setting->getDonateUrl() }}" target="_blank" rel="noopener noreferrer">Donate Now</a>
+                                        <a class="tp-grey-btn" href="{{ optional($setting)->getDonateUrl() ?? \App\Models\Setting::DEFAULT_DONATE_URL }}" target="_blank" rel="noopener noreferrer">Donate Now</a>
                                     </div>
                                 </div>
                             </div>
