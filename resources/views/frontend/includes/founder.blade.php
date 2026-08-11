@@ -1,27 +1,16 @@
-    <div class="tp-about-4__area tp-about-4__space p-relative fix grey-bg mt-60 mb-30">
-        <div class="tp-about-4__bg" data-background="{{ asset('storage/images/' . $about->image) }}">
-
-        </div>
-        <div class="tp-about-4__shape d-none d-xxl-block">
-            <img src="" alt="">               
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="offset-xl-6 offset-lg-6 col-xl-6 col-lg-6 wow tpfadeRight" data-wow-duration=".9s"
-                data-wow-delay=".5s">
-                    <div class="tp-about-4__left-side alive-founder-panel">
-                        <div class="tp-about-4__section-title">
-                            <p class="alive-eyebrow">Our Story</p>
-                            <h4 class="tp-section-title alive-section-title">The Founder</h4>
-                        </div>
-                        <div class="tp-about-4__content">
-                            <div class="tp-about-4__text">
-                                <p>{{ $about->donations }}</p>
-                            </div>                                
-   
-                        </div>
-                    </div>
+<section class="alive-split">
+    <div class="container">
+        <div class="alive-equal">
+            <div class="alive-equal__media">
+                <img src="{{ asset('storage/images/' . ltrim(optional($about)->image ?? '', '/')) }}" alt="The Founder of Alive Passion Ministries">
+            </div>
+            <div class="alive-equal__card alive-founder-panel">
+                <p class="alive-eyebrow">Our Story</p>
+                <h2 class="alive-heading">The Founder</h2>
+                <div class="alive-equal__text">
+                    <p>{{ optional($about)->donations }}</p>
                 </div>
             </div>
         </div>
     </div>
+</section>

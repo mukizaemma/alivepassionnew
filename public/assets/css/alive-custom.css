@@ -88,9 +88,56 @@ body.is-home .tp-header-3__bar button {
   color: #fff;
 }
 
+.alive-header-wrap {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.alive-header-row {
+  flex-wrap: nowrap !important;
+}
+
+.tp-header-3__logo {
+  padding: 10px 0;
+}
+
+.tp-header-3__logo img {
+  width: 78px;
+  max-width: 78px;
+  height: auto;
+}
+
+.tp-header-3__main-menu {
+  padding-left: 0 !important;
+}
+
+.tp-header-3__main-menu > nav > ul {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  gap: 0.15rem;
+}
+
+.tp-header-3__main-menu > nav > ul > li {
+  padding-right: 0 !important;
+  float: none;
+}
+
 .tp-header-3__main-menu > nav > ul > li > a {
   white-space: nowrap;
-  font-size: 15px;
+  font-size: 14px !important;
+  font-weight: 600;
+  padding: 22px 11px !important;
+}
+
+.tp-header-3__btn .tp-btn {
+  padding: 0.65rem 1.25rem !important;
+  white-space: nowrap;
 }
 
 /* ── Full-screen hero slider ──────────────────────────── */
@@ -406,19 +453,74 @@ body.is-home .tp-header-3__bar button {
   text-transform: capitalize;
 }
 
-/* ── Founder ──────────────────────────────────────────── */
+/* ── Equal-height image + text splits ─────────────────── */
 
-.alive-founder-panel {
-  background: rgba(255, 255, 255, 0.96);
-  border-radius: 8px;
-  padding: 2rem;
-  border-left: 4px solid var(--alive-gold);
-  box-shadow: var(--alive-shadow);
+.alive-split {
+  padding: 70px 0;
+  background: linear-gradient(180deg, #f5f8fc 0%, #eef3f9 100%);
 }
 
-.alive-founder-panel .tp-about-4__text p {
-  line-height: 1.85;
+.alive-equal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 1fr;
+  align-items: stretch;
+  overflow: hidden;
+  min-height: 520px;
+  border-radius: 18px;
+  box-shadow: var(--alive-shadow);
+  background: #fff;
+}
+
+.alive-equal__media {
+  position: relative;
+  min-height: 520px;
+  overflow: hidden;
+  background: var(--alive-blue-deep);
+}
+
+.alive-equal__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.alive-equal__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2.75rem 2.5rem;
+  background: #fff;
+}
+
+.alive-equal__text,
+.alive-equal__card .alive-lead,
+.alive-equal__card .alive-body-text {
   color: var(--alive-muted);
+  line-height: 1.85;
+}
+
+.alive-equal__text p {
+  margin-bottom: 1rem;
+}
+
+.alive-founder-panel {
+  border-left: 4px solid var(--alive-gold);
+}
+
+@media (max-width: 991px) {
+  .alive-equal {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    min-height: 0;
+  }
+
+  .alive-equal__media {
+    min-height: 360px;
+  }
 }
 
 /* ── Partners ─────────────────────────────────────────── */
@@ -755,18 +857,8 @@ body.is-home .tp-header-3__bar button {
   margin-top: 1.5rem;
 }
 
-.alive-initiative__image {
-  border-radius: 18px;
-  overflow: hidden;
+.alive-initiative .alive-equal {
   box-shadow: var(--alive-shadow-strong);
-  min-height: 360px;
-}
-
-.alive-initiative__image img {
-  width: 100%;
-  height: 100%;
-  min-height: 360px;
-  object-fit: cover;
 }
 
 /* ── Mission & Vision ─────────────────────────────────── */

@@ -1,7 +1,7 @@
 <section id="alive-about" class="alive-initiative">
     <div class="container">
-        <div class="row align-items-center g-4 g-xl-5">
-            <div class="col-lg-6 wow tpfadeLeft" data-wow-duration=".9s" data-wow-delay=".2s">
+        <div class="alive-equal">
+            <div class="alive-equal__card wow tpfadeLeft" data-wow-duration=".9s" data-wow-delay=".2s">
                 <p class="alive-eyebrow">{{ config('alive.initiative.eyebrow') }}</p>
                 <h2 class="alive-heading">{{ config('alive.initiative.title') }}</h2>
                 <p class="alive-lead">{{ config('alive.initiative.body') }}</p>
@@ -13,10 +13,8 @@
                     <a class="alive-btn-outline alive-btn-outline--navy" href="{{ $setting->getDonateUrl() }}" target="_blank" rel="noopener noreferrer">Donate</a>
                 </div>
             </div>
-            <div class="col-lg-6 wow tpfadeRight" data-wow-duration=".9s" data-wow-delay=".35s">
-                <div class="alive-initiative__image">
-                    <img src="{{ asset('storage/images/' . ltrim(optional($about)->image ?? '', '/')) }}" alt="Alive Passion Ministries in Bugesera, Rwanda">
-                </div>
+            <div class="alive-equal__media wow tpfadeRight" data-wow-duration=".9s" data-wow-delay=".35s">
+                <img src="{{ asset('storage/images/' . ltrim(optional($about)->image ?? '', '/')) }}" alt="Alive Passion Ministries in Bugesera, Rwanda">
             </div>
         </div>
     </div>

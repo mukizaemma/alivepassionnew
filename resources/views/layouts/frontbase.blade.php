@@ -141,16 +141,16 @@
         <!-- header-top-area-end -->
         <!-- header-area-start -->
         <div id="header-sticky" class="tp-header-3__area">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-xl-2 col-lg-6 col-md-4 col-7">
+            <div class="container-fluid alive-header-wrap">
+                <div class="row align-items-center flex-nowrap alive-header-row">
+                    <div class="col-auto">
                         <div class="tp-header-3__logo">
                             <a href="{{route('home')}}">
-                                <img src="{{asset('storage\images').$setting->logo}}" alt="{{ $setting->company ?? 'Alive Passion Ministries' }}" width="90px">
+                                <img src="{{asset('storage\images').$setting->logo}}" alt="{{ $setting->company ?? 'Alive Passion Ministries' }}">
                             </a>
                         </div>
                     </div>
-                    <div class="col-xl-8 d-none d-xl-block">
+                    <div class="col d-none d-xl-block">
                         <div class="tp-header-3__main-menu">
                             <nav class="tp-main-menu-content">
                                 <ul>
@@ -162,22 +162,22 @@
                                             <li><a href="{{route('testimonials')}}">Testimonials</a></li>
                                         </ul>
                                     </li>
-                                    <li class="has-dropdown"><a href="{{ route('showPrograms') }}">Our Programs</a>
+                                    <li class="has-dropdown"><a href="{{ route('showPrograms') }}">Programs</a>
                                         <ul class="submenu tp-submenu">
                                             @foreach($programs as $rs)
                                                 <li><a href="{{route('singleProgram',$rs->slug)}}">{{$rs->title}}</a></li>
                                             @endforeach
                                         </ul>
                                     </li>
-                                    <li><a href="{{route('posts')}}">Recent Activities</a></li>
-                                    <li><a href="{{route('impacts')}}">Our Impact</a></li>
+                                    <li><a href="{{route('posts')}}">Activities</a></li>
+                                    <li><a href="{{route('impacts')}}">Impact</a></li>
                                     <li><a href="{{route('gallery')}}">Gallery</a></li>
                                     <li><a href="{{route('contacts')}}">Contact</a></li>
                                 </ul>
                             </nav>
                         </div>
                     </div>
-                    <div class="col-xl-2 col-lg-6 col-md-8 col-5">
+                    <div class="col-auto">
                         <div class="tp-header-3__right-box">
                             <div class="tp-header-3__right-action text-end">
                                 <ul class="d-flex align-items-center justify-content-end">
