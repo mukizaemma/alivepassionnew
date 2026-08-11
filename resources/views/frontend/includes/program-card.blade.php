@@ -9,7 +9,7 @@
         <h3>
             <a href="{{ route('singleProgram', ['slug' => $program->slug]) }}">{{ $program->title }}</a>
         </h3>
-        <p>{{ $program->summary(130) }}</p>
+        <p>{{ $program->summary(200) }}</p>
         <a class="alive-learn-more" href="{{ route('singleProgram', ['slug' => $program->slug]) }}">
             Learn More <i class="flaticon-arrow-right"></i>
         </a>
