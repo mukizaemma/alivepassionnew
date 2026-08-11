@@ -76,7 +76,8 @@
                                                     @include('admin.includes.image-picker', [
                                                         'name' => 'image2',
                                                         'folder' => '',
-                                                        'label' => 'Pages Header Image',
+                                                        'label' => 'Default page header (fallback)',
+                                                        'help' => 'Used when a page has no image under Page Header Images.',
                                                         'current' => $data->image2,
                                                         'pickerId' => 'picker-header',
                                                     ])

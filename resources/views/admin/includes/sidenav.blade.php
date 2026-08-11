@@ -66,6 +66,10 @@
                 <div class="sb-nav-link-icon"><i class="fa fa-gallery"></i></div>
                 Home Slide Images
             </a>
+            <a class="nav-link" href="{{route('pageHeroes')}}">
+                <div class="sb-nav-link-icon"><i class="fa fa-images"></i></div>
+                Page Header Images
+            </a>
 
 
 

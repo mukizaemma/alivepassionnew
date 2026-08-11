@@ -8,7 +8,7 @@
     @include('frontend.includes.page-hero', [
         'title' => 'Testimonials',
         'subtitle' => 'Voices of hope from the people and communities we serve.',
-        'image' => $about->image2 ?? $about->image ?? null,
+        'page' => 'testimonials',
     ])
 
     <!-- testimonial-area-start -->

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Campain;
+use App\Models\PageHero;
 use App\Models\Partner;
 use App\Models\Program;
 use App\Models\Setting;
@@ -25,11 +26,13 @@ class AppServiceProvider extends ServiceProvider
             View::share('campains', Campain::oldest()->get());
             View::share('partners', Partner::oldest()->get());
             View::share('programs', Program::ordered()->get());
+            View::share('pageHeroes', PageHero::query()->pluck('image', 'page_key'));
         } catch (\Throwable $e) {
             View::share('setting', null);
             View::share('campains', collect());
             View::share('partners', collect());
             View::share('programs', collect());
+            View::share('pageHeroes', collect());
         }
     }
 }

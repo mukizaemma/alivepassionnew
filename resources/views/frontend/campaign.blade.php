@@ -2,9 +2,13 @@
 
 @section('content')
 
+    @include('frontend.includes.page-hero', [
+        'title' => $campaign->title,
+        'subtitle' => 'Walk with us as we meet this need in Bugesera.',
+        'page' => 'campaigns',
+    ])
 
-
-        <div class="tp-event-details__area pt-120 pb-120">
+        <div class="tp-event-details__area pt-70 pb-120">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-8 col-lg-8">

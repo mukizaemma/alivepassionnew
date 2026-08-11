@@ -1,5 +1,9 @@
 /* Alive Passion Ministries — brand system (logo palette) */
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --alive-blue: #002654;
   --alive-blue-deep: #001a3a;
@@ -22,9 +26,10 @@
   --tp-heading-primary: #002654;
 }
 
-/* ── Home: header floats over full-screen hero ─────────── */
+/* ── Header floats over full-screen heroes ─────────────── */
 
-body.is-home .tp-header-height {
+body.is-home .tp-header-height,
+body.has-page-hero .tp-header-height {
   position: absolute;
   top: 0;
   left: 0;
@@ -33,7 +38,8 @@ body.is-home .tp-header-height {
   width: 100%;
 }
 
-body.is-home .tp-header-top-3__area {
+body.is-home .tp-header-top-3__area,
+body.has-page-hero .tp-header-top-3__area {
   background: rgba(0, 26, 58, 0.55);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(253, 184, 19, 0.2);
@@ -41,34 +47,45 @@ body.is-home .tp-header-top-3__area {
 
 body.is-home .tp-header-top-3__left-box ul li span,
 body.is-home .tp-header-top-3__right-box ul li a,
-body.is-home .tp-header-top-3__right-box ul li i {
+body.is-home .tp-header-top-3__right-box ul li i,
+body.has-page-hero .tp-header-top-3__left-box ul li span,
+body.has-page-hero .tp-header-top-3__right-box ul li a,
+body.has-page-hero .tp-header-top-3__right-box ul li i {
   color: rgba(255, 255, 255, 0.9) !important;
 }
 
-body.is-home .tp-header-3__area:not(.header-sticky) {
+body.is-home .tp-header-3__area:not(.header-sticky),
+body.has-page-hero .tp-header-3__area:not(.header-sticky) {
   background: transparent;
 }
 
-body.is-home .tp-header-3__area:not(.header-sticky) .tp-header-3__main-menu nav > ul > li > a {
+body.is-home .tp-header-3__area:not(.header-sticky) .tp-header-3__main-menu nav > ul > li > a,
+body.has-page-hero .tp-header-3__area:not(.header-sticky) .tp-header-3__main-menu nav > ul > li > a {
   color: #fff;
 }
 
 body.is-home .tp-header-3__area:not(.header-sticky) .tp-header-3__main-menu nav > ul > li > a:hover,
-body.is-home .tp-header-3__area:not(.header-sticky) .tp-header-3__main-menu nav > ul > li:hover > a {
+body.is-home .tp-header-3__area:not(.header-sticky) .tp-header-3__main-menu nav > ul > li:hover > a,
+body.has-page-hero .tp-header-3__area:not(.header-sticky) .tp-header-3__main-menu nav > ul > li > a:hover,
+body.has-page-hero .tp-header-3__area:not(.header-sticky) .tp-header-3__main-menu nav > ul > li:hover > a {
   color: var(--alive-gold);
 }
 
-body.is-home .tp-header-3__area.header-sticky {
+body.is-home .tp-header-3__area.header-sticky,
+body.has-page-hero .tp-header-3__area.header-sticky {
   background-color: var(--alive-blue);
   box-shadow: 0 8px 28px rgba(0, 26, 58, 0.35);
 }
 
-body.is-home .tp-header-3__area.header-sticky .tp-header-3__main-menu nav > ul > li > a {
+body.is-home .tp-header-3__area.header-sticky .tp-header-3__main-menu nav > ul > li > a,
+body.has-page-hero .tp-header-3__area.header-sticky .tp-header-3__main-menu nav > ul > li > a {
   color: #fff;
 }
 
 body.is-home .tp-header-3__area.header-sticky .tp-header-3__main-menu nav > ul > li > a:hover,
-body.is-home .tp-header-3__area.header-sticky .tp-header-3__main-menu nav > ul > li:hover > a {
+body.is-home .tp-header-3__area.header-sticky .tp-header-3__main-menu nav > ul > li:hover > a,
+body.has-page-hero .tp-header-3__area.header-sticky .tp-header-3__main-menu nav > ul > li > a:hover,
+body.has-page-hero .tp-header-3__area.header-sticky .tp-header-3__main-menu nav > ul > li:hover > a {
   color: var(--alive-gold);
 }
 
@@ -86,7 +103,8 @@ body.is-home .tp-header-3__btn .tp-btn:hover,
   color: var(--alive-blue-deep) !important;
 }
 
-body.is-home .tp-header-3__bar button {
+body.is-home .tp-header-3__bar button,
+body.has-page-hero .tp-header-3__bar button {
   color: #fff;
 }
 
@@ -145,10 +163,100 @@ body.is-home .tp-header-3__bar button {
   padding: 28px 14px !important;
 }
 
+.tp-header-3__right-box {
+  margin-left: 0 !important;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.tp-header-3__right-action ul {
+  margin: 0;
+  gap: 0.5rem;
+}
+
+.tp-header-3__btn {
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
 .tp-header-3__btn .tp-btn {
-  padding: 0.75rem 1.45rem !important;
+  height: 44px !important;
+  line-height: 1 !important;
+  padding: 0 1.35rem !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
   white-space: nowrap;
   font-size: 15px;
+  border-radius: 6px;
+}
+
+.tp-header-top-3__area .container {
+  max-width: 1600px;
+}
+
+.tp-header-top-3__left-box ul,
+.tp-header-top-3__right-box ul {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin: 0;
+  padding: 8px 0;
+  gap: 0.85rem;
+}
+
+.tp-header-top-3__left-box ul li,
+.tp-header-top-3__right-box ul li {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 0 !important;
+  margin: 0;
+  line-height: 1;
+}
+
+.tp-header-top-3__left-box ul li span {
+  margin-right: 0 !important;
+  line-height: 1;
+}
+
+.tp-header-top-3__social {
+  background: transparent !important;
+  padding: 0 !important;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.tp-header-top-3__social a {
+  width: 30px;
+  height: 30px;
+  padding: 0 !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff !important;
+  font-size: 13px !important;
+  line-height: 1;
+}
+
+.tp-header-top-3__social a:hover {
+  background: var(--alive-gold);
+  color: var(--alive-blue-deep) !important;
+}
+
+.tp-header-top-3__right-box ul li i {
+  transform: none !important;
+  padding-right: 8px !important;
+  line-height: 1;
+}
+
+.tp-header-top-3__right-box ul li a {
+  line-height: 1;
+  white-space: nowrap;
 }
 
 /* Clean dropdown menus */
@@ -738,7 +846,8 @@ body.is-home .tp-header-3__bar button {
 
 .alive-whatsapp {
   position: fixed;
-  right: 22px;
+  left: 22px;
+  right: auto;
   bottom: 92px;
   z-index: 999;
   width: 56px;
@@ -857,10 +966,11 @@ body.is-home .tp-header-3__bar button {
 
 .alive-page-hero {
   position: relative;
-  min-height: 280px;
+  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
-  padding: 4.5rem 0 4rem;
+  padding: 8rem 0 5rem;
   background-color: var(--alive-blue);
   background-size: cover;
   background-position: center;
@@ -869,7 +979,7 @@ body.is-home .tp-header-3__bar button {
 .alive-page-hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(100deg, rgba(0, 26, 58, 0.88) 0%, rgba(0, 38, 84, 0.62) 100%);
+  background: linear-gradient(100deg, rgba(0, 26, 58, 0.82) 0%, rgba(0, 38, 84, 0.52) 100%);
 }
 
 .alive-page-hero__content {
@@ -882,15 +992,29 @@ body.is-home .tp-header-3__bar button {
   margin: 0;
   color: #fff;
   font-family: var(--alive-serif);
-  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
   font-weight: 700;
+  line-height: 1.12;
 }
 
 .alive-page-hero__subtitle {
-  margin: 0.85rem 0 0;
-  color: rgba(255, 255, 255, 0.86);
-  font-size: 1.05rem;
+  margin: 1rem 0 0;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 1.15rem;
   line-height: 1.7;
+  max-width: 36rem;
+}
+
+.alive-page-hero .alive-hero-scroll {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  z-index: 2;
+  transform: translateX(-50%);
+}
+
+#page-content {
+  scroll-margin-top: 0;
 }
 
 /* ── Initiative / Hope in Action ──────────────────────── */
@@ -1084,12 +1208,34 @@ body.is-home .tp-header-3__bar button {
 
 .alive-impact {
   position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
   padding: 90px 0;
   background-color: var(--alive-blue-deep);
+  overflow: hidden;
+}
+
+.alive-impact__parallax {
+  position: absolute;
+  top: -20%;
+  left: 0;
+  width: 100%;
+  height: 140%;
   background-image: var(--alive-impact-image);
   background-size: cover;
   background-position: center;
-  overflow: hidden;
+  will-change: transform;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alive-impact__parallax {
+    top: 0;
+    height: 100%;
+    will-change: auto;
+  }
 }
 
 .alive-impact__overlay {
@@ -1141,6 +1287,34 @@ body.is-home .tp-header-3__bar button {
 .alive-impact__stat span {
   color: rgba(255, 255, 255, 0.82);
   font-size: 0.95rem;
+}
+
+.alive-impact--light {
+  min-height: 0;
+  display: block;
+  background: var(--alive-cream);
+  background-image: none;
+  padding: 80px 0 70px;
+}
+
+.alive-impact--light .alive-impact__overlay {
+  display: none;
+}
+
+.alive-impact--light .alive-impact__stat {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.85rem 1.1rem;
+  box-shadow: var(--alive-shadow);
+  height: 100%;
+}
+
+.alive-impact--light .alive-impact__stat strong {
+  color: var(--alive-blue);
+}
+
+.alive-impact--light .alive-impact__stat span {
+  color: var(--alive-muted);
 }
 
 /* ── Recent activities ────────────────────────────────── */
@@ -1471,7 +1645,7 @@ body.is-home .tp-header-3__bar button {
 }
 
 /* Inner pages: keep the brand header */ 
-body:not(.is-home) .tp-header-3__area {
+body:not(.is-home):not(.has-page-hero) .tp-header-3__area {
   background: var(--alive-blue);
 }
 
@@ -1484,7 +1658,7 @@ body:not(.is-home) .tp-header-3__main-menu nav > ul > li:hover > a {
   color: var(--alive-gold);
 }
 
-body:not(.is-home) .tp-header-top-3__area {
+body:not(.is-home):not(.has-page-hero) .tp-header-top-3__area {
   background: var(--alive-blue-deep);
 }
 

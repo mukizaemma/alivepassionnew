@@ -5,6 +5,7 @@
     @include('frontend.includes.page-hero', [
         'title' => 'Our Programs',
         'subtitle' => 'Practical compassion and Gospel-centered care across Bugesera, Rwanda.',
+        'page' => 'programs',
     ])
 
     <section class="alive-programs alive-programs--page">

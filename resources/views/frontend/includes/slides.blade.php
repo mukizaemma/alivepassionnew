@@ -11,9 +11,6 @@
                                 <div class="row">
                                     <div class="col-xl-8 col-lg-10">
                                         <div class="tp-slider-3__content alive-hero-content">
-                                            <p class="alive-hero-brand">
-                                                {{ config('alive.hero.eyebrow') }}
-                                            </p>
                                             <h1 class="tp-slider-3-title alive-hero-title">
                                                 {{ config('alive.hero.title_before') }}
                                                 <span>{{ config('alive.hero.title_accent') }}</span>

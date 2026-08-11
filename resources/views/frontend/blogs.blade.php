@@ -8,7 +8,7 @@
     @include('frontend.includes.page-hero', [
         'title' => 'Recent Activities',
         'subtitle' => 'Stories of hope, training, outreach, and transformation from Bugesera.',
-        'image' => $about->image2 ?? $about->image ?? null,
+        'page' => 'activities',
     ])
 
     <!-- service-area-start -->

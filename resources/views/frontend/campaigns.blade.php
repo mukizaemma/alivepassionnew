@@ -3,6 +3,12 @@
 
 @section('content')
 
+    @include('frontend.includes.page-hero', [
+        'title' => 'Campaigns',
+        'subtitle' => 'Give where the need is greatest — food, shelter, skills, and hope for families in Bugesera.',
+        'page' => 'campaigns',
+    ])
+
     <!-- service-area-start -->
 
     

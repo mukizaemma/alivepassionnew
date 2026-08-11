@@ -5,6 +5,7 @@
     @include('frontend.includes.page-hero', [
         'title' => 'Gallery',
         'subtitle' => 'Glimpses of the work God is doing through Alive Passion Ministries.',
+        'page' => 'gallery',
     ])
 
         <!-- gallery-area-start -->

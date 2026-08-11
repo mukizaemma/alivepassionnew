@@ -5,7 +5,7 @@
     @include('frontend.includes.page-hero', [
         'title' => 'About Alive Passion Ministries',
         'subtitle' => 'A faith-driven initiative in Bugesera, Rwanda — loving, serving, and transforming lives through the Gospel.',
-        'image' => $about->image ?? null,
+        'page' => 'about',
     ])
 
     <section class="alive-initiative alive-initiative--page">

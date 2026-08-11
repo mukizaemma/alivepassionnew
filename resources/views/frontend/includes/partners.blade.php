@@ -1,3 +1,4 @@
+@if(isset($partners) && $partners->count())
         <div class="tp-brand-2__area alive-partners">
             <div class="container">
                 <div class="tp-brand-2__border">
@@ -27,3 +28,4 @@
                 </div>
             </div>
         </div>
+@endif

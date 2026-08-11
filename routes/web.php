@@ -92,6 +92,9 @@ Route::middleware(['auth:sanctum,admin',config('jetstream.auth_session'),'verifi
     Route::get('/aboutUs',[App\Http\Controllers\BackgroundController::class,'background'])->name('background');
     Route::POST('/saveBackg',[App\Http\Controllers\BackgroundController::class,'saveBackg'])->name('saveBackg');
 
+    Route::get('/page-headers',[App\Http\Controllers\PageHeroController::class,'index'])->name('pageHeroes');
+    Route::post('/page-headers',[App\Http\Controllers\PageHeroController::class,'update'])->name('savePageHeroes');
+
     Route::get('/homePage',[App\Http\Controllers\BackgroundController::class,'homePage'])->name('homePage');
     Route::POST('/saveHom',[App\Http\Controllers\BackgroundController::class,'saveHom'])->name('saveHom');
 

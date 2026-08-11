@@ -30,7 +30,13 @@
     <link rel="stylesheet" href="{{ asset('assets/css/alive-custom.css') }}">
 </head>
 
-<body class="{{ request()->routeIs('home') ? 'is-home' : '' }}">
+@php
+    $overlayHeader = request()->routeIs([
+        'backgroundDetails', 'team', 'testimonials', 'showPrograms', 'singleProgram',
+        'posts', 'impacts', 'gallery', 'contacts', 'campaigns', 'campaign',
+    ]);
+@endphp
+<body class="{{ request()->routeIs('home') ? 'is-home' : ($overlayHeader ? 'has-page-hero' : '') }}">
 
     <!-- preloader -->
     <div id="preloader">
@@ -119,8 +125,8 @@
                                 <li><span>Connect with us</span></li>
                                 <li>
                                     <div class="tp-header-top-3__social">
-                                        <a href="{{ $setting->facebook ?? '' }}" class="btn btn-secondary" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="{{ $setting->instagram ?? '' }}" class="btn btn-secondary" target="_blank"><i class="fab fa-instagram"></i></a>
+                                        <a href="{{ $setting->facebook ?? '' }}" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="{{ $setting->instagram ?? '' }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                                     </div>  
                                 </li>
                             </ul>
@@ -350,6 +356,39 @@
     <script src="{{ asset('assets/js/imagesloaded-pkgd.js') }}"></script>
     <script src="{{ asset('assets/js/ajax-form.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script>
+        (function () {
+            var section = document.getElementById('alive-impact');
+            var layer = section && section.querySelector('.alive-impact__parallax');
+            if (!section || !layer || section.classList.contains('alive-impact--light')) {
+                return;
+            }
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                return;
+            }
+
+            var ticking = false;
+            function update() {
+                var rect = section.getBoundingClientRect();
+                var view = window.innerHeight || 1;
+                if (rect.bottom < 0 || rect.top > view) {
+                    ticking = false;
+                    return;
+                }
+                var progress = (view - rect.top) / (view + rect.height);
+                layer.style.transform = 'translate3d(0, ' + ((progress - 0.5) * 120) + 'px, 0)';
+                ticking = false;
+            }
+
+            window.addEventListener('scroll', function () {
+                if (!ticking) {
+                    window.requestAnimationFrame(update);
+                    ticking = true;
+                }
+            }, { passive: true });
+            update();
+        })();
+    </script>
 
 
 

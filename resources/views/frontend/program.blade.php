@@ -5,7 +5,7 @@
     @include('frontend.includes.page-hero', [
         'title' => $program->title,
         'subtitle' => $program->summary(160),
-        'image' => $about->image2 ?? $about->image ?? null,
+        'page' => 'programs',
     ])
 
     <section class="alive-program-detail">
