@@ -139,12 +139,12 @@
                                                 <div class="row">
 
                                                     <div class="col-lg-4 col-sm-12">
-                                                            <label>Select File <br><span style="color: red">(This image should be resized to 270X312 pixels)</span></label>
-                                                            <label id="projectinput7" class="file center-block">
-                                                                <input type="file" id="image" name="image"
-                                                                    required="">
-                                                                <span class="file-custom"></span>
-                                                            </label>
+                                                        @include('admin.includes.image-picker', [
+                                                            'name' => 'image',
+                                                            'folder' => 'staff',
+                                                            'label' => 'Staff Photo',
+                                                            'required' => true,
+                                                        ])
                                                     </div>
 
                                                     <div class="col-lg-8 col-sm-12">

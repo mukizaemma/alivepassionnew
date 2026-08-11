@@ -31,17 +31,11 @@ class ProgramController extends Controller
 
     public function store(Request $request)
     {
-
-        $file = $request->file('image');
-
-        $path = $file->store('public/images/programs');
-        $fileName = basename($path);
-
-        // Generate slug
+        $fileName = $this->storeOptimizedImage($request, 'public/images/programs');
 
         $slug = Str::of($request->input('title'))->slug();
 
-        $program = Program::firstOrCreate(
+        Program::firstOrCreate(
             ['slug' => $slug],
             [
             'title' =>$request->input('title'),
@@ -95,15 +89,8 @@ class ProgramController extends Controller
             return back()->with('Error','Program Not Found');
         }
 
-        if ($request->hasFile('image') && request('image') != '') {
-            $dir = 'public/images/programs';
-
-            if (File::exists($dir)) {
-                unlink($dir);
-            }
-            $path = $request->file('image')->store($dir);
-            $fileName = str_replace($dir, '', $path);
-
+        $fileName = $this->storeOptimizedImage($request, 'public/images/programs');
+        if ($fileName) {
             $data->image = $fileName;
         }
 

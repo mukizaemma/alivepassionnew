@@ -74,20 +74,14 @@
                                 <textarea id="ProgramDescription" rows="5" class="form-control" name="description" >{{$data->description}}</textarea>
                             </div>
 
-                            <div class="row mt-5">
-
-                                <div class="col-lg-6 col-sm-12">
-                                    <label>Select File</label><br>
-                                    <label id="projectinput7" class="file center-block">
-                                        <img src="{{ asset('storage/images/programs/' . $data->image) }}" alt="" width="120px">
-                                    </label>
-                                </div>
-                                <div class="col-lg-6 col-sm-12">
-                                    <label>Change Cover image </label>
-                                    <label id="projectinput7" class="file center-block">
-                                        <input type="file" id="image" name="image">
-                                        <span class="file-custom"></span>
-                                    </label>
+                            <div class="row mt-4">
+                                <div class="col-12">
+                                    @include('admin.includes.image-picker', [
+                                        'name' => 'image',
+                                        'folder' => 'programs',
+                                        'label' => 'Cover Image',
+                                        'current' => $data->image,
+                                    ])
                                 </div>
                             </div>
 

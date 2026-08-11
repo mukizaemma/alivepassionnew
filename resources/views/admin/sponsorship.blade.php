@@ -153,15 +153,14 @@
                                                 <textarea id="childTestimony" rows="5" class="form-control" name="testimany" placeholder="Testimony"></textarea>
                                             </div>
 
-                                            <div class="row mt-5">
-
-                                                <div class="col-lg-6 col-sm-12">
-                                                    <label>Child Picture</label>
-                                                    <label id="projectinput7" class="file center-block">
-                                                        <input type="file" id="image" name="image"
-                                                            required="">
-                                                        <span class="file-custom"></span>
-                                                    </label>
+                                            <div class="row mt-4">
+                                                <div class="col-12">
+                                                    @include('admin.includes.image-picker', [
+                                                        'name' => 'image',
+                                                        'folder' => 'sponsorship',
+                                                        'label' => 'Child Picture',
+                                                        'required' => true,
+                                                    ])
                                                 </div>
                                             </div>
 

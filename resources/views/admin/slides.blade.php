@@ -87,13 +87,13 @@
                                             <div class="form-body">
                                                 <div class="row mb-4">
 
-                                                    <div class="col-lg-6 col-sm-12">
-                                                            <label>Select Slide Image <br><span style="color: red">(This image should be resized to 694x1894 pixels)</span></label>
-                                                            <label id="projectinput7" class="file center-block">
-                                                                <input type="file" id="image" name="image"
-                                                                    required="">
-                                                                <span class="file-custom"></span>
-                                                            </label>
+                                                    <div class="col-12">
+                                                        @include('admin.includes.image-picker', [
+                                                            'name' => 'image',
+                                                            'folder' => 'slides',
+                                                            'label' => 'Slide Image',
+                                                            'required' => true,
+                                                        ])
                                                     </div>
                                                 </div>
 

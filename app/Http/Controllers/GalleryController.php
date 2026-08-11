@@ -47,11 +47,8 @@ class GalleryController extends Controller
         $data ->caption = $request->caption;
         $data ->program_id = $request->program_id;
 
-        // Uploading image
-        if ($request->hasFile('image')) {
-            $dir = 'public/images/gallery';
-            $path = $request->file('image')->store($dir);
-            $fileName = str_replace($dir, '', $path);
+        $fileName = $this->storeOptimizedImage($request, 'public/images/gallery', 'image', true);
+        if ($fileName) {
             $data->image = $fileName;
         }
 
@@ -104,15 +101,8 @@ class GalleryController extends Controller
             return back()->with('Error','Image Not Found');
         }
 
-        if ($request->hasFile('image') && request('image') != '') {
-            $dir = 'public/images/gallery';
-
-            if (File::exists($dir)) {
-                unlink($dir);
-            }
-            $path = $request->file('image')->store($dir);
-            $fileName = str_replace($dir, '', $path);
-
+        $fileName = $this->storeOptimizedImage($request, 'public/images/gallery', 'image', true);
+        if ($fileName) {
             $data->image = $fileName;
         }
 

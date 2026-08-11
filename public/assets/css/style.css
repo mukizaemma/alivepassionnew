@@ -52,14 +52,14 @@
   */
   --tp-common-white: #ffffff;
   --tp-common-black: #000000;
-  --tp-common-orange: #f8d203;
-  --tp-heading-primary: #159abe;
+  --tp-common-orange: #fdb813;
+  --tp-heading-primary: #002d62;
   --tp-grey-1: #f2f7f7;
   --tp-grey-2: #8b9e9e;
   --tp-text-body: #000000;
-  --tp-theme-1: #1e3737;
-  --tp-theme-2: #1e5f3d;
-  --tp-theme-3: #1e5f3d;
+  --tp-theme-1: #002d62;
+  --tp-theme-2: #002d62;
+  --tp-theme-3: #0a3a75;
   --tp-border-1: #385656;
   --tp-border-2: #edefef;
 }

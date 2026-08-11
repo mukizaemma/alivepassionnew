@@ -117,15 +117,12 @@
 
                                             <div class="row">
                                                 <div class="col-lg-6 col-sm-12">
-                                                    <label for="image" class="form-label">Blog Cover Image<br> <span
-                                                            style="color: red">(This image should be resized to 500X800
-                                                            pixels)</span></label>
-                                                    <div class="input-group">
-
-                                                        <input type="file" name="image" class="form-control"
-                                                            id="image">
-
-                                                    </div>
+                                                    @include('admin.includes.image-picker', [
+                                                        'name' => 'image',
+                                                        'folder' => 'news',
+                                                        'label' => 'Blog Cover Image',
+                                                        'required' => true,
+                                                    ])
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12">
                                                     <label for="gallery" class="form-label">Upload up to 3 more Images<br>

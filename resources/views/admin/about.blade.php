@@ -62,19 +62,14 @@
                                         </div>
 
                                             <div class="row">
-                                                <div class="col-lg-6 col-sm-12">
-                                                    <label>Backgound Image below Programs </label><br>
-                                                    <label id="projectinput7" class="file center-block">
-                                                      <img src="{{asset('storage/images').$data->backImage}}" alt="" width="150px">
-                                                    </label>
-                                                </div>
-
-                                                <div class="col-lg-6 col-sm-12">
-                                                    <label>Change the Backgound Image below Programs <br><span style="color: red">(This image should be resized to 500X800 pixels)</span></label>
-                                                    <label id="projectinput7" class="file center-block">
-                                                        <input type="file" id="image" name="backImage">
-                                                        <span class="file-custom"></span>
-                                                    </label>
+                                                <div class="col-12">
+                                                    @include('admin.includes.image-picker', [
+                                                        'name' => 'backImage',
+                                                        'folder' => '',
+                                                        'label' => 'Background Image below Programs',
+                                                        'current' => $data->backImage,
+                                                        'currentUrl' => asset('storage/images' . $data->backImage),
+                                                    ])
                                                 </div>
                                             </div>
                                         </div>

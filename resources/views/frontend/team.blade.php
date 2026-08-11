@@ -4,6 +4,11 @@
 
 @section('content')
 
+    @include('frontend.includes.page-hero', [
+        'title' => 'Our Team',
+        'subtitle' => 'Servants called to love, equip, and walk with communities in Bugesera.',
+        'image' => $about->image ?? null,
+    ])
 
     @include('frontend.includes.founder')
 

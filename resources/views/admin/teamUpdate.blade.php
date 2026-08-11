@@ -73,20 +73,15 @@
                                 </div>
                             </div>
 
-                            <div class="row mt-5">
-
-                                <div class="col-lg-6 col-sm-12">
-                                    <label>Select File</label><br>
-                                    <label id="projectinput7" class="file center-block">
-                                        <img src="{{asset('storage/images/staff').$data->image}}" alt="" width="120px">
-                                    </label>
-                                </div>
-                                <div class="col-lg-6 col-sm-12">
-                                    <label>Change Staff Profile <br><span style="color: red">(This image should be resized to 270X312 pixels)</span></label>
-                                    <label id="projectinput7" class="file center-block">
-                                        <input type="file" id="image" name="image">
-                                        <span class="file-custom"></span>
-                                    </label>
+                            <div class="row mt-4">
+                                <div class="col-12">
+                                    @include('admin.includes.image-picker', [
+                                        'name' => 'image',
+                                        'folder' => 'staff',
+                                        'label' => 'Staff Photo',
+                                        'current' => $data->image,
+                                        'currentUrl' => asset('storage/images/staff' . $data->image),
+                                    ])
                                 </div>
                             </div>
 

@@ -35,11 +35,8 @@ class StudentsController extends Controller
         $data ->phone = $request->phone;
         $data ->testimony = $request->testimony;
 
-        // Uploading image
-        if ($request->hasFile('image')) {
-            $dir = 'public/images/students';
-            $path = $request->file('image')->store($dir);
-            $fileName = str_replace($dir, '', $path);
+        $fileName = $this->storeOptimizedImage($request, 'public/images/students', 'image', true);
+        if ($fileName) {
             $data->image = $fileName;
         }
 
@@ -76,15 +73,8 @@ class StudentsController extends Controller
             return back()->with('Error','Student Not Found');
         }
 
-        if ($request->hasFile('image') && request('image') != '') {
-            $dir = 'public/images/students';
-
-            if (File::exists($dir)) {
-                unlink($dir);
-            }
-            $path = $request->file('image')->store($dir);
-            $fileName = str_replace($dir, '', $path);
-
+        $fileName = $this->storeOptimizedImage($request, 'public/images/students', 'image', true);
+        if ($fileName) {
             $data->image = $fileName;
         }
 

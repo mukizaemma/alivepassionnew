@@ -97,18 +97,15 @@
                                 <textarea id="childTestimony" rows="5" class="form-control" name="testimany">{{$data->testimany}}</textarea>
                             </div>
 
-                            <div class="row mt-5">
-
-                                <div class="col-lg-6 col-sm-12">
-                                    <label>Child's Picture</label>
-                                    <img src="{{ asset('storage/images/sponsorship') . $data->image }}" alt="" width="120px">
-                                </div>
-                                <div class="col-lg-6 col-sm-12">
-                                    <label>Change the Child's Picture <br><span style="color: red">(This image should be resized to 540x600 pixels)</span></label>
-                                    <label id="projectinput7" class="file center-block">
-                                        <input type="file" id="image" name="image">
-                                        <span class="file-custom"></span>
-                                    </label>
+                            <div class="row mt-4">
+                                <div class="col-12">
+                                    @include('admin.includes.image-picker', [
+                                        'name' => 'image',
+                                        'folder' => 'sponsorship',
+                                        'label' => "Child's Picture",
+                                        'current' => $data->image,
+                                        'currentUrl' => asset('storage/images/sponsorship' . $data->image),
+                                    ])
                                 </div>
                             </div>
 

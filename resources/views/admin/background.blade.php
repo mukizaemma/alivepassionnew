@@ -53,57 +53,33 @@
 
                                         </div>
 
-                                            <div class="row">
-                                                <div class="col-lg-6 col-sm-12">
-                                                    <label>Founder Image </label><br>
-                                                    <label id="projectinput7" class="file center-block">
-                                                      <img src="{{ asset('storage/images/' . $data->image) }}" width="150">
-
-                                                    </label>
+                                            <div class="row g-3">
+                                                <div class="col-lg-4">
+                                                    @include('admin.includes.image-picker', [
+                                                        'name' => 'image',
+                                                        'folder' => '',
+                                                        'label' => 'Founder Image',
+                                                        'current' => $data->image,
+                                                        'pickerId' => 'picker-founder',
+                                                    ])
                                                 </div>
-
-                                                <div class="col-lg-6 col-sm-12">
-                                                    <label>Change the founder Image</label>
-                                                    <label id="projectinput7" class="file center-block">
-                                                        <input type="file" id="image" name="image">
-                                                        <span class="file-custom"></span>
-                                                    </label>
+                                                <div class="col-lg-4">
+                                                    @include('admin.includes.image-picker', [
+                                                        'name' => 'image1',
+                                                        'folder' => '',
+                                                        'label' => 'Home Background Image',
+                                                        'current' => $data->image1,
+                                                        'pickerId' => 'picker-home-bg',
+                                                    ])
                                                 </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-lg-6 col-sm-12">
-                                                    <label>Home Back Image </label><br>
-                                                    <label id="projectinput7" class="file center-block">
-                                                        <img src="{{ asset('storage/images/' . $data->image1) }}" width="150">
-
-                                                    </label>
-                                                </div>
-
-                                                <div class="col-lg-6 col-sm-12">
-                                                    <label>Change the home back Image</label>
-                                                    <label id="projectinput7" class="file center-block">
-                                                        <input type="file" id="image" name="image1">
-                                                        <span class="file-custom"></span>
-                                                    </label>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-lg-6 col-sm-12">
-                                                    <label>Pages Header Image </label><br>
-                                                    <label id="projectinput7" class="file center-block">
-                                                      <img src="{{ asset('storage/images/' . $data->image2) }}" width="150">
-
-                                                    </label>
-                                                </div>
-
-                                                <div class="col-lg-6 col-sm-12">
-                                                    <label>Change the pages header Image</label>
-                                                    <label id="projectinput7" class="file center-block">
-                                                        <input type="file" id="image" name="image2">
-                                                        <span class="file-custom"></span>
-                                                    </label>
+                                                <div class="col-lg-4">
+                                                    @include('admin.includes.image-picker', [
+                                                        'name' => 'image2',
+                                                        'folder' => '',
+                                                        'label' => 'Pages Header Image',
+                                                        'current' => $data->image2,
+                                                        'pickerId' => 'picker-header',
+                                                    ])
                                                 </div>
                                             </div>
                                         </div>

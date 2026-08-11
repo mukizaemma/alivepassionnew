@@ -58,20 +58,15 @@
                                         placeholder="Partnership Description">{!!$data->website!!}</textarea>
                                 </div>
 
-                                <div class="row mt-5">
-
-                                    <div class="col-lg-6 col-sm-12">
-                                        <label>Select File</label>
-                                        <label id="projectinput7" class="file center-block">
-                                            <img src="{{ asset('storage/images/partners') . $data->image }}" alt="" width="120px">
-                                        </label>
-                                    </div>
-                                    <div class="col-lg-6 col-sm-12">
-                                        <label>Select File</label>
-                                        <label id="projectinput7" class="file center-block">
-                                            <input type="file" id="image" name="image" >
-                                            <span class="file-custom"></span>
-                                        </label>
+                                <div class="row mt-4">
+                                    <div class="col-12">
+                                        @include('admin.includes.image-picker', [
+                                            'name' => 'image',
+                                            'folder' => 'partners',
+                                            'label' => 'Partner Logo',
+                                            'current' => $data->image,
+                                            'currentUrl' => asset('storage/images/partners' . $data->image),
+                                        ])
                                     </div>
                                 </div>
 

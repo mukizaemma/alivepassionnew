@@ -48,7 +48,7 @@ class HomeController extends Controller
         else{
 
 
-            $programs = Program::oldest()->get();
+            $programs = Program::ordered()->get();
             $about = About::first();
             $homeGallery = DB::table('galleries')->latest()->get();
             $events = DB::table('events')->latest()->get();
@@ -70,7 +70,7 @@ class HomeController extends Controller
 
     public function index(){
         $background = DB::table('backgrounds')->latest()->get();
-        $programs = Program::oldest()->get();
+        $programs = Program::ordered()->get();
         $about = background::first();
         $mission = About::first();
         $homeGallery = DB::table('galleries')->latest()->get();
@@ -78,7 +78,7 @@ class HomeController extends Controller
         $events = DB::table('events')->latest()->get();
         $slides = Slide::orderBY('id','asc')->latest()->get();
         $testimonials = Testimony::latest()->paginate(3);
-        $news = DB::table('news')->latest()->get();
+        $news = News::latest()->take(3)->get();
         $partners = DB::table('partners')->latest()->get();
         $staff = DB::table('teams')->orderby('id','asc')->where('display','Yes')->get();
 
@@ -100,7 +100,7 @@ class HomeController extends Controller
 
     public function backgroundDetails(){
 
-        $programs = Program::latest()->get();
+        $programs = Program::ordered()->get();
         $partners = Partner::oldest()->get();
         $about = background::first();
         $mission = About::first();
@@ -108,7 +108,7 @@ class HomeController extends Controller
         return view('frontend.about',['about'=>$about,'mission'=>$mission,'testimonials' =>$testimonials,'programs'=>$programs, 'partners'=>$partners]);
     }
     public function team(){
-        $programs = Program::latest()->get();
+        $programs = Program::ordered()->get();
         $team = Team::where('category','Administration')->oldest()->get();
         $advisors = Team::where('category','Advisors')->oldest()->get();
         $operations = Team::where('category','Operations')->oldest()->get();
@@ -116,33 +116,42 @@ class HomeController extends Controller
         return view('frontend.team',['team'=>$team,'programs'=>$programs,'about'=>$about,'advisors'=>$advisors,'operations'=>$operations]);
     }
     public function testimonials(){
-        $programs = Program::latest()->get();
+        $programs = Program::ordered()->get();
         $testimonials = Testimony:: latest()->get();
         $about = background::first();
         return view('frontend.testimonials',['testimonials'=>$testimonials,'programs'=>$programs, 'about'=>$about]);
     }
     public function testimony($id){
         $testimony = testimony::where('id',$id)->first();
-        $programs = Program:: latest()->get();
+        $programs = Program::ordered()->get();
         $about = background::first();
         $testimonials = Testimony:: where('id','!=',$testimony)->paginate(6);
         return view('frontend.testimony',['testimony'=>$testimony, 'programs'=>$programs,'testimonials'=>$testimonials,'about'=>$about]);
     }
     public function showPrograms(){
-        $programs = Program::oldest()->get();
+        $programs = Program::ordered()->get();
         $about = background::first();
         return view('frontend.programs',['programs'=>$programs, 'about'=>$about]);
     }
     public function singleProgram($slug){
         $program = Program::where('slug',$slug)->firstOrFail();
-        $programs = Program::where('id' ,'!=',$program->id)->oldest()->get();
+        $otherPrograms = Program::where('id' ,'!=',$program->id)->ordered()->get();
         $about = background::first();
-        $gallery = Gallery::latest()->get();
-        $news = News::latest()->paginate(9);
-        return view('frontend.program',['program'=>$program, 'programs'=>$programs, 'about'=>$about, 'gallery'=>$gallery,'news'=>$news]);
+        $gallery = Image::where('program_id', $program->id)->latest()->get();
+        if ($gallery->isEmpty()) {
+            $gallery = Gallery::latest()->take(6)->get();
+        }
+        $news = News::latest()->paginate(6);
+        return view('frontend.program',[
+            'program'=>$program,
+            'otherPrograms'=>$otherPrograms,
+            'about'=>$about,
+            'gallery'=>$gallery,
+            'news'=>$news
+        ]);
     }
     public function campaigns(){
-        $programs = Program::oldest()->get();
+        $programs = Program::ordered()->get();
         $campaigns = Campain::latest()->get();
         $about = background::first();
         return view('frontend.campaigns',['campaigns'=>$campaigns, 'about'=>$about,'programs'=>$programs]);
@@ -151,7 +160,7 @@ class HomeController extends Controller
         $campaign = Campain::where('slug',$slug)->firstOrFail();
         $campaigns = Campain::where('id' ,'!=',$campaign->id)->oldest()->get();
         $about = background::first();
-        $programs = Program::oldest()->get();
+        $programs = Program::ordered()->get();
         $testimonials = DB::table('testimonies')->paginate(6);
         return view('frontend.campaign',['campaign'=>$campaign, 'campaigns'=>$campaigns, 'about'=>$about, 'testimonials'=>$testimonials,'programs'=>$programs]);
     }
@@ -171,7 +180,7 @@ class HomeController extends Controller
     }
     public function posts(){
         $news = News::latest()->paginate(20);
-        $programs = Program::latest()->get();
+        $programs = Program::ordered()->get();
         $about = background::first();
         return view('frontend.blogs',['news'=>$news,'programs'=>$programs, 'about'=>$about]);
     }
@@ -180,25 +189,27 @@ class HomeController extends Controller
         $blogs = News::latest()->get();
         $blog = News::where('slug',$slug)->first();
         $relatedBlogs = News::where('id','!=',$blog->id)->latest()->take(9);
-        $programs = Program::latest()->get();
+        $programs = Program::ordered()->get();
         $about = background::first();
         return view('frontend.blog',['blog'=>$blog,'blogs'=>$blogs,'relatedBlogs'=>$relatedBlogs,'programs'=>$programs,'about'=>$about]);
     }
 
     public function gallery(){
         $gallery = Image::with('program')->latest()->get();
-        $programs = Program::with('images')->get();
-        return view('frontend.gallery',['gallery'=>$gallery,'programs'=>$programs]);
+        $programs = Program::with('images')->ordered()->get();
+        $about = background::first();
+        return view('frontend.gallery',['gallery'=>$gallery,'programs'=>$programs,'about'=>$about]);
     }
 
     public function impacts(){
         $impacts = Impact::latest()->get();
-        $programs = Program::latest()->get();
-        return view('home.impacts',['impacts'=>$impacts,'programs'=>$programs]);
+        $programs = Program::ordered()->get();
+        $about = background::first();
+        return view('frontend.impacts',['impacts'=>$impacts,'programs'=>$programs,'about'=>$about]);
     }
     public function contacts(){
         $contact = Setting::all()->first();
-        $programs = Program::latest()->get();
+        $programs = Program::ordered()->get();
         $about = background::first();
         return view('frontend.contact',['programs'=>$programs,'contact'=>$contact, 'about'=>$about]);
     }
@@ -218,6 +229,21 @@ class HomeController extends Controller
             ]
         );
         return redirect()->back()->with('success', 'Your Message has been well submitted. We will get back to you soon');
+    }
+
+    public function subscribe(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|max:255',
+        ]);
+
+        Message::firstOrCreate([
+            'names' => 'Newsletter subscriber',
+            'email' => $request->input('email'),
+            'message' => 'Please add this email to the Alive Passion Ministries newsletter.',
+        ]);
+
+        return redirect()->back()->with('success', 'Thank you for subscribing. We will keep you connected with the work in Bugesera.');
     }
 
     public function webMessages(){
@@ -333,16 +359,9 @@ class HomeController extends Controller
         $data->donate_url = $request->input('donate_url');
 
 
-        if ($request->hasFile('logo') && request('logo') != '') {
-            $dir = 'public/images';
-
-            if (File::exists($dir)) {
-                unlink($dir);
-            }
-            $path = $request->file('logo')->store($dir);
-            $fileName = str_replace($dir, '', $path);
-
-            $data->logo = $fileName;
+        $logo = $this->storeOptimizedImage($request, 'public/images', 'logo', true);
+        if ($logo) {
+            $data->logo = $logo;
         }
 
         $data->update();
@@ -370,16 +389,9 @@ class HomeController extends Controller
         $data->values = $request->input('values');
 
 
-        if ($request->hasFile('backImage') && request('backImage') != '') {
-            $dir = 'public/images';
-
-            if (File::exists($dir)) {
-                unlink($dir);
-            }
-            $path = $request->file('backImage')->store($dir);
-            $fileName = str_replace($dir, '', $path);
-
-            $data->backImage = $fileName;
+        $backImage = $this->storeOptimizedImage($request, 'public/images', 'backImage', true);
+        if ($backImage) {
+            $data->backImage = $backImage;
         }
 
         $data->update();

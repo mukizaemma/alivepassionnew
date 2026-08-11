@@ -74,21 +74,15 @@
                             </div>
 
                             <div class="row">
-
-                                <div class="col-lg-4 col-sm-12">
-                                        <label>Featured Image</label>
-                                        <label id="projectinput7" class="file center-block">
-                                            <img src="{{asset('storage/images/gallery').$data->image}}" alt="" width="120px">
-                                        </label>
+                                <div class="col-12">
+                                    @include('admin.includes.image-picker', [
+                                        'name' => 'image',
+                                        'folder' => 'gallery',
+                                        'label' => 'Gallery Image',
+                                        'current' => $data->image,
+                                        'currentUrl' => asset('storage/images/gallery' . $data->image),
+                                    ])
                                 </div>
-                                <div class="col-lg-4 col-sm-12">
-                                        <label>Select File</label>
-                                        <label id="projectinput7" class="file center-block">
-                                            <input type="file" id="image" name="image">
-                                            <span class="file-custom"></span>
-                                        </label>
-                                </div>
-
                             </div>
 
                                 <div class="col-lg-4 col-sm-12">

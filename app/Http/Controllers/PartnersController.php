@@ -37,11 +37,8 @@ class PartnersController extends Controller
         $data ->website = $request->website;
         $data ->description = $request->description;
 
-        // Uploading image
-        if ($request->hasFile('image')) {
-            $dir = 'public/images/partners';
-            $path = $request->file('image')->store($dir);
-            $fileName = str_replace($dir, '', $path);
+        $fileName = $this->storeOptimizedImage($request, 'public/images/partners', 'image', true);
+        if ($fileName) {
             $data->image = $fileName;
         }
 
@@ -80,15 +77,8 @@ class PartnersController extends Controller
             return back()->with('Error','Partner Not Found');
         }
 
-        if ($request->hasFile('image') && request('image') != '') {
-            $dir = 'public/images/partners';
-
-            if (File::exists($dir)) {
-                unlink($dir);
-            }
-            $path = $request->file('image')->store($dir);
-            $fileName = str_replace($dir, '', $path);
-
+        $fileName = $this->storeOptimizedImage($request, 'public/images/partners', 'image', true);
+        if ($fileName) {
             $data->image = $fileName;
         }
 

@@ -24,10 +24,13 @@
     <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/spacing.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/alive-custom.css') }}">
 </head>
 
-<body>
+<body class="{{ request()->routeIs('home') ? 'is-home' : '' }}">
 
     <!-- preloader -->
     <div id="preloader">
@@ -43,6 +46,12 @@
         <i class="far fa-angle-double-up"></i>
     </button>
     <!-- back-to-top-end  -->
+
+    @if($setting && $setting->getWhatsappUrl())
+        <a class="alive-whatsapp" href="{{ $setting->getWhatsappUrl() }}" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    @endif
 
         <!-- tp-offcanvus-area-start -->
     <div class="tpoffcanvas-area">
@@ -79,6 +88,9 @@
                 </ul>
             </div>
             
+            <div class="tpoffcanvas__donate mb-4">
+                <a class="tp-btn w-100" href="{{ $setting->getDonateUrl() }}" target="_blank" rel="noopener noreferrer">Donate</a>
+            </div>
             <div class="tpoffcanvas__social">
                 <div class="row align-items-center">
                     <div class="col-12 mt-5">
@@ -131,49 +143,41 @@
         <div id="header-sticky" class="tp-header-3__area">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-xl-1 col-lg-6 col-md-4 col-7">
+                    <div class="col-xl-2 col-lg-6 col-md-4 col-7">
                         <div class="tp-header-3__logo">
                             <a href="{{route('home')}}">
-                                <img src="{{asset('storage\images').$setting->logo}}" alt="" width="90px">
+                                <img src="{{asset('storage\images').$setting->logo}}" alt="{{ $setting->company ?? 'Alive Passion Ministries' }}" width="90px">
                             </a>
                         </div>
                     </div>
-                    <div class="col-xl-10 d-none d-xl-block">
+                    <div class="col-xl-8 d-none d-xl-block">
                         <div class="tp-header-3__main-menu">
                             <nav class="tp-main-menu-content">
                                 <ul>
-                                    <li><a href="{{route('home')}}">Home</a>
-                                    </li>
-                                    <li class="has-dropdown"><a href="{{route('home')}}">About</a>
+                                    <li><a href="{{route('home')}}">Home</a></li>
+                                    <li class="has-dropdown"><a href="{{route('backgroundDetails')}}">About</a>
                                         <ul class="submenu tp-submenu">
                                             <li><a href="{{route('backgroundDetails')}}">Our Background</a></li>
                                             <li><a href="{{route('team')}}">Our Team</a></li>
                                             <li><a href="{{route('testimonials')}}">Testimonials</a></li>
                                         </ul>
                                     </li>
-                                    <li class="has-dropdown"><a href="{{ route('showPrograms') }}">Programs</a>
+                                    <li class="has-dropdown"><a href="{{ route('showPrograms') }}">Our Programs</a>
                                         <ul class="submenu tp-submenu">
                                             @foreach($programs as $rs)
                                                 <li><a href="{{route('singleProgram',$rs->slug)}}">{{$rs->title}}</a></li>
                                             @endforeach
                                         </ul>
                                     </li>
-                                    <li class="has-dropdown"><a href="{{ $setting->getDonateUrl() }}" target="_blank" rel="noopener noreferrer">Get Involved</a>
-                                        <ul class="submenu tp-submenu">
-                                            @foreach($campains as $rs)
-                                                <li><a href="{{route('campaign',$rs->slug)}}">{{$rs->title}}</a></li>
-                                            @endforeach
-                                        </ul>
-                                    </li>
-                                    {{-- <li><a href="{{route('campaigns')}}">Our Cause</a></li> --}}
-                                    <li><a href="{{route('posts')}}">Updates</a></li>
+                                    <li><a href="{{route('posts')}}">Recent Activities</a></li>
+                                    <li><a href="{{route('impacts')}}">Our Impact</a></li>
                                     <li><a href="{{route('gallery')}}">Gallery</a></li>
                                     <li><a href="{{route('contacts')}}">Contact</a></li>
                                 </ul>
                             </nav>
                         </div>
                     </div>
-                    <div class="col-xl-1 col-lg-6 col-md-8 col-5">
+                    <div class="col-xl-2 col-lg-6 col-md-8 col-5">
                         <div class="tp-header-3__right-box">
                             <div class="tp-header-3__right-action text-end">
                                 <ul class="d-flex align-items-center justify-content-end">
@@ -184,7 +188,7 @@
                                     </li>                                     --}}
                                     <li>
                                         <div class="tp-header-3__btn d-none d-md-block">
-                                            <a class="tp-btn" href="{{ $setting->getDonateUrl() }}" target="_blank" rel="noopener noreferrer">Donate Now</a>
+                                            <a class="tp-btn" href="{{ $setting->getDonateUrl() }}" target="_blank" rel="noopener noreferrer">Donate</a>
                                         </div>
                                     </li>  
                                     <li>
@@ -207,88 +211,100 @@
         @yield('content')
     </main>
 
-    <footer>
-        <!-- footer-area-start -->
+    <footer class="alive-footer">
         <div class="tp-footer__area">
-            <div class="tp-footer__bg" data-background="#">
+            <div class="tp-footer__bg">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xl-4 col-lg-4 col-sm-12 mb-45 wow tpfadeUp" data-wow-duration=".9s"
-                    data-wow-delay=".3s">
-                            <div class="tp-footer__widget footer-2-col-1">
+                        <div class="col-xl-3 col-lg-4 col-md-6 mb-45 wow tpfadeUp" data-wow-duration=".9s" data-wow-delay=".2s">
+                            <div class="tp-footer__widget">
                                 <div class="tp-footer__logo">
-                                    <a href="index.html">
-                                        <img src="{{asset('storage\images').$setting->logo}}" alt="" height="90px">
+                                    <a href="{{ route('home') }}">
+                                        <img src="{{ asset('storage/images') . ($setting->logo ?? '') }}" alt="{{ $setting->company ?? 'Alive Passion Ministries' }}" height="90">
                                     </a>
                                 </div>
-                                <div class="tp-footer__text">
-                                    <p style="color:#fff">
-                                        Every child sponsored, every woman trained, every soul discipled — is a life forever changed.
-                                    </p>
-                                </div>
-                                <div class="tp-footer__contact-list">
-                                    <div class="tp-footer__contact-item pb-20 d-flex about-items-center">
-                                        <div class="tp-footer__icon">
-                                            <i class="flaticon-mail"></i>
-                                        </div>
-                                        <div class="tp-footer__text">
-                                             <a href="mailto:{{$setting->email ?? ''}}" style="color:#fff">{{$setting->email ?? ''}}</a>
-                                        </div>
-                                    </div>
-                                    <div class="tp-footer__contact-item d-flex about-items-center">
-                                        <div class="tp-footer__icon">
-                                            <i aria-hidden="true" class="flaticon-phone"></i>
-                                        </div>
-                                        <div class="tp-footer__text">                                            
-                                             <a href="tel:{{$setting->phone ?? ''}}" style="color:#fff">{{$setting->phone ?? ''}}</a>
-                                        </div>
-                                    </div>
+                                <p class="alive-footer__brand-name">Alive Passion Ministries</p>
+                                <p class="alive-footer__tagline">Love. Serve. Transform. A Gospel-centered ministry restoring dignity in Bugesera, Rwanda.</p>
+                                <div class="alive-footer__socials">
+                                    <a href="{{ $setting->facebook ?? '' }}" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="{{ $setting->instagram ?? '' }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                    @if(!empty($setting->youtube))
+                                        <a href="{{ $setting->youtube }}" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
-                        {{-- <div class="col-xl-2 col-lg-2 col-md-6 mb-45 wow tpfadeUp" data-wow-duration=".9s"
-                    data-wow-delay=".5s">
-                            <div class="tp-footer__widget footer-2-col-2">
-                                <h4 class="tp-footer__widget-title-3">Useful Links</h4>
+                        <div class="col-xl-2 col-lg-4 col-md-6 mb-45 wow tpfadeUp" data-wow-duration=".9s" data-wow-delay=".3s">
+                            <div class="tp-footer__widget">
+                                <h4 class="tp-footer__widget-title-3">Quick Links</h4>
                                 <div class="tp-footer__list">
                                     <ul>
-                                        <li><a href="{{ route('home') }}" style="color:#fff">Home</a></li>
-                                        <li><a href="{{ route('backgroundDetails') }}" style="color:#fff">About Us</a></li>
-                                        <li><a href="{{ route('showPrograms') }}" style="color:#fff">Programs</a></li>
-                                        <li><a href="{{ route('testimonials') }}" style="color:#fff">Testimonials</a></li>
-                                        <li><a href="{{ route('posts') }}" style="color:#fff">Updates</a></li>
-                                        <li><a href="{{ route('contacts') }}" style="color:#fff">Contact Us</a></li>
+                                        <li><a href="{{ route('home') }}">Home</a></li>
+                                        <li><a href="{{ route('backgroundDetails') }}">About Us</a></li>
+                                        <li><a href="{{ route('showPrograms') }}">Our Programs</a></li>
+                                        <li><a href="{{ route('posts') }}">Recent Activities</a></li>
+                                        <li><a href="{{ route('impacts') }}">Our Impact</a></li>
+                                        <li><a href="{{ route('gallery') }}">Gallery</a></li>
+                                        <li><a href="{{ route('contacts') }}">Contact</a></li>
                                     </ul>
                                 </div>
                             </div>
-                        </div> --}}
-                        <div class="col-xl-4 col-lg-4 col-sm-12 mb-45 wow tpfadeUp" data-wow-duration=".9s"
-                    data-wow-delay=".7s">
-                            <div class="tp-footer__widget footer-2-col-3">
-                                <h4 class="tp-footer__widget-title-3">Our Causes</h4>
+                        </div>
+                        <div class="col-xl-3 col-lg-4 col-md-6 mb-45 wow tpfadeUp" data-wow-duration=".9s" data-wow-delay=".4s">
+                            <div class="tp-footer__widget">
+                                <h4 class="tp-footer__widget-title-3">Our Programs</h4>
                                 <div class="tp-footer__list">
                                     <ul>
-                                        @foreach ($campains as $rs)
-                                            <li><a href="{{ route('campaign',['slug'=>$rs->slug]) }}" style="color:#fff">{{ $rs->title }}</a></li>
+                                        @foreach ($programs as $rs)
+                                            <li><a href="{{ route('singleProgram', $rs->slug) }}">{{ $rs->title }}</a></li>
                                         @endforeach
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-4 col-lg-4 col-sm-12 mb-45 wow tpfadeUp" data-wow-duration=".9s"
-                    data-wow-delay=".9s">
-                            <div class="tp-footer__widget footer-2-col-4 ">
-                                <div class="tp-footer__donate-box tp-copyright__bg p-3">
-                                    <h4 class="tp-footer__donate-title-sm">We don’t just give <br> we walk with them until they rise</h4>
-                                    <a class="tp-btn theme-2-bg" href="{{ $setting->getDonateUrl() }}" target="_blank" rel="noopener noreferrer">Get Involved</a>
+                        <div class="col-xl-4 col-lg-6 col-md-6 mb-45 wow tpfadeUp" data-wow-duration=".9s" data-wow-delay=".5s">
+                            <div class="tp-footer__widget">
+                                <h4 class="tp-footer__widget-title-3">Contact Us</h4>
+                                <div class="tp-footer__contact-list">
+                                    @if(!empty($setting->address))
+                                    <div class="tp-footer__contact-item alive-footer__contact-item d-flex align-items-start">
+                                        <div class="tp-footer__icon"><i class="flaticon-map" aria-hidden="true"></i></div>
+                                        <div class="tp-footer__text">
+                                            <a href="https://share.google/A6v7gQBjDhgp4NiUD" target="_blank" rel="noopener noreferrer">{{ $setting->address }}</a>
+                                        </div>
+                                    </div>
+                                    @endif
+                                    <div class="tp-footer__contact-item alive-footer__contact-item d-flex align-items-center">
+                                        <div class="tp-footer__icon"><i class="flaticon-phone" aria-hidden="true"></i></div>
+                                        <div class="tp-footer__text">
+                                            <a href="tel:{{ $setting->phone ?? '' }}">{{ $setting->phone ?? '' }}</a>
+                                        </div>
+                                    </div>
+                                    <div class="tp-footer__contact-item alive-footer__contact-item d-flex align-items-center">
+                                        <div class="tp-footer__icon"><i class="flaticon-mail" aria-hidden="true"></i></div>
+                                        <div class="tp-footer__text">
+                                            <a href="mailto:{{ $setting->email ?? '' }}">{{ $setting->email ?? '' }}</a>
+                                        </div>
+                                    </div>
                                 </div>
+                                <h4 class="tp-footer__widget-title-3 mt-35">Stay Connected</h4>
+                                <form class="alive-footer__subscribe" action="{{ route('subscribe') }}" method="POST">
+                                    @csrf
+                                    <input type="email" name="email" placeholder="Your email address" required>
+                                    <button type="submit" class="tp-btn">Subscribe</button>
+                                </form>
+                                @if(session('success'))
+                                    <p class="alive-footer__flash">{{ session('success') }}</p>
+                                @endif
+                                @error('email')
+                                    <p class="alive-footer__flash">{{ $message }}</p>
+                                @enderror
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- footer-area-end -->
 
         <!-- copyright-area-start -->
         <div class="tp-copyright__area tp-copyright__bg">
@@ -296,21 +312,20 @@
                 <div class="row align-items-center">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="tp-copyright__text text-center text-sm-start">
-                            <span style="color: #fff !important">
-                            &copy; Alive Passion,
+                            <span>
+                            &copy; {{ $setting->company ?? 'Alive Passion Ministries' }},
                             <script>
                                 document.write(new Date().getFullYear());
                             </script>
                             | Site Developed by
                             </span>
-                             <a href="https://iremetech.com"
-                                target="_blank" style="color: #fff">Ireme Technologies</a>
+                            <a href="https://iremetech.com" target="_blank" rel="noopener noreferrer">Ireme Technologies</a>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="tp-copyright__social text-center text-sm-end">
-                            <a href="{{ $setting->facebook ?? '' }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                            <a href="{{ $setting->instagram ?? '' }}" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="{{ $setting->facebook ?? '' }}" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="{{ $setting->instagram ?? '' }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>

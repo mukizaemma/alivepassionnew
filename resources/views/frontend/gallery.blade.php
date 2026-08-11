@@ -2,10 +2,13 @@
 
 @section('content')
 
+    @include('frontend.includes.page-hero', [
+        'title' => 'Gallery',
+        'subtitle' => 'Glimpses of the work God is doing through Alive Passion Ministries.',
+    ])
 
- 
         <!-- gallery-area-start -->
-<div class="tp-gallery-3__area pt-120 pb-120">
+<div class="tp-gallery-3__area pt-70 pb-90">
     <div class="container">
         <!-- Tabs Navigation -->
 

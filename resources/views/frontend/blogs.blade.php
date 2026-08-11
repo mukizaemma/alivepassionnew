@@ -5,30 +5,16 @@
 @section('content')
 
 
-        <!-- breadcrumb-area-start -->
-        <div class="tp-breadcrumb__area p-relative fix tp-breadcrumb-height" data-background="{{ asset('storage/images/' . $about->image2) }}">
-            <div class="tp-breadcrumb__shape-1 z-index-5">
-                <img src="assets/img/breadcrumb/breadcrumb-shape-1.png" alt="">
-            </div>
-            <div class="tp-breadcrumb__shape-2 z-index-5">
-                <img src="assets/img/breadcrumb/breadcrumb-shape-2.png" alt="">
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="tp-breadcrumb__content z-index-5">
-                            <h3 class="tp-breadcrumb__title text-center">Our Recent Updates</h3>
-                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- breadcrumb-area-end -->
+    @include('frontend.includes.page-hero', [
+        'title' => 'Recent Activities',
+        'subtitle' => 'Stories of hope, training, outreach, and transformation from Bugesera.',
+        'image' => $about->image2 ?? $about->image ?? null,
+    ])
 
     <!-- service-area-start -->
 
     
-    <div class="tp-blog-2__area pt-120 pb-90">
+    <div class="tp-blog-2__area pt-70 pb-90">
         <div class="container">
             {{-- <div class="row">
                 <div class="col-xl-12">

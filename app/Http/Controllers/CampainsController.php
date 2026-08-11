@@ -21,12 +21,7 @@ class CampainsController extends Controller
 
 public function store(Request $request)
 {
-    $fileName = null;
-    if ($request->hasFile('image')) {
-        $file = $request->file('image');
-        $path = $file->store('public/images/campaigns');
-        $fileName = basename($path);
-    }
+    $fileName = $this->storeOptimizedImage($request, 'public/images/campaigns');
 
     $slug = Str::slug($request->input('title'));
 
@@ -44,7 +39,7 @@ public function store(Request $request)
             'status' => $request->input('status', 'active'),
             'start_date' => $request->input('start_date'),
             'end_date' => $request->input('end_date'),
-            'image' => $fileName ?? $request->input('existing_image'),
+            'image' => $fileName,
             'target_people' => $request->input('target_people'),
             'cost_per_person' => $request->input('cost_per_person'),
             'slug' => $slug
@@ -67,20 +62,17 @@ public function update(Request $request, $id)
 {
     $post = Campain::findOrFail($id);
 
-    if ($request->hasFile('image')) {
-        $file = $request->file('image');
-        $path = $file->store('public/images/campains');
-        $fileName = basename($path);
+    $fileName = $this->storeOptimizedImage($request, 'public/images/campaigns');
+    if ($fileName) {
+        Storage::delete('public/images/campaigns/' . $post->image);
         Storage::delete('public/images/campains/' . $post->image);
         $post->image = $fileName;
     }
 
-    if ($request->hasFile('youtubeimg')) {
-        $file = $request->file('youtubeimg');
-        $path = $file->store('public/images/campains');
-        $fileName = basename($path);
+    $youtubeImg = $this->storeOptimizedImage($request, 'public/images/campaigns', 'youtubeimg');
+    if ($youtubeImg) {
         Storage::delete('public/images/campains/' . $post->youtubeimg);
-        $post->youtubeimg = $fileName;
+        $post->youtubeimg = $youtubeImg;
     }
 
     $post->title = $request->input('title');

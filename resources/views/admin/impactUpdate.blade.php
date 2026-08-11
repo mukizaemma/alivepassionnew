@@ -61,20 +61,14 @@
                                     @enderror
                                     </div>
 
-                                    <div class="row mt-5">
-
-                                        <div class="col-lg-6 col-sm-12">
-                                            <label>Featured Cover Image</label>
-                                            <img src="{{asset('storage/images/impacts/' . $data->image)}}" alt="" width="120px">
-                                        </div>
-                                        <div class="col-lg-6 col-sm-12">
-                                            <label>Update the Cover Image</label>
-                                            <input type="file" class="form-control-file @error('image') is-invalid @enderror" id="image" name="image">
-                                            @error('image')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                    <div class="row mt-4">
+                                        <div class="col-12">
+                                            @include('admin.includes.image-picker', [
+                                                'name' => 'image',
+                                                'folder' => 'impacts',
+                                                'label' => 'Cover Image',
+                                                'current' => $data->image,
+                                            ])
                                         </div>
                                     </div>
 

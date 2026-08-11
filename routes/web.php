@@ -15,6 +15,8 @@ use App\Http\Controllers\AdminController;
 */
 
 Route::get('/',[App\Http\Controllers\HomeController::class,'index'])->name('home');
+Route::get('/sitemap.xml',[App\Http\Controllers\SitemapController::class,'index'])->name('sitemap');
+Route::get('/robots.txt',[App\Http\Controllers\SitemapController::class,'robots'])->name('robots');
 Route::get('/background',[App\Http\Controllers\HomeController::class,'backgroundDetails'])->name('backgroundDetails');
 Route::get('/team',[App\Http\Controllers\HomeController::class,'team'])->name('team');
 Route::get('/our-founder',[App\Http\Controllers\HomeController::class,'founder'])->name('founder');
@@ -52,6 +54,7 @@ Route::get('/saveVol',[App\Http\Controllers\HomeController::class,'saveVol'])->n
 Route::get('/deleteVol',[App\Http\Controllers\HomeController::class,'deleteVol'])->name('deleteVol');
 
 Route::post('/sendMessage',[App\Http\Controllers\HomeController::class,'sendMessage'])->name('sendMessage');
+Route::post('/subscribe',[App\Http\Controllers\HomeController::class,'subscribe'])->name('subscribe');
 Route::post('/resetGoalRaised/{id}',[App\Http\Controllers\CampainsController::class,'resetGoalRaised'])->name('resetGoalRaised');
 
 // Route::get('/member',[App\Http\Controllers\HomeController::class,'member'])->name('member');
@@ -78,6 +81,7 @@ Route::middleware(['auth:sanctum,admin',config('jetstream.auth_session'),'verifi
     // Route::get('branches', [App\Http\Controllers\BranchController::class, 'index'])->name('branch.index');
 
     Route::get('/redirects',[App\Http\Controllers\HomeController::class,'redirects'])->name('redirects');
+    Route::get('/admin/media',[App\Http\Controllers\MediaController::class,'index'])->name('admin.media');
 
     Route::get('/setting',[App\Http\Controllers\HomeController::class,'setting'])->name('settings');
     Route::post('/saveSetting/{id}',[App\Http\Controllers\HomeController::class,'saveSetting'])->name('saveSetting');

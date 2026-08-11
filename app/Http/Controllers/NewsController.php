@@ -55,13 +55,7 @@ class NewsController extends Controller
     public function store(Request $request)
     {
 
-        $fileName = '';
-        if($request->hasFile('image')){
-            $file = $request->file('image');
-
-            $path = $file->store('public/images/news');
-            $fileName = basename($path);
-        }
+        $fileName = $this->storeOptimizedImage($request, 'public/images/news') ?: '';
 
         // Generate the slug
         $slug = Str::of($request->input('title'))->slug();
@@ -80,10 +74,9 @@ class NewsController extends Controller
 
         if($request->hasFile('gallery')){
             $galleryImages = $request->file('gallery');
-            foreach($galleryImages as $gallery){
-                $path = $gallery->store('public/images/galleries');
-                $fileName = basename($path);
-                $blog->Blogimages()->create(['gallery' => $fileName]);
+            foreach($galleryImages as $gallery) {
+                $path = app(\App\Services\ImageUploadService::class)->store($gallery, 'public/images/galleries');
+                $blog->Blogimages()->create(['gallery' => $path]);
             }
         }
 
@@ -104,13 +97,9 @@ class NewsController extends Controller
         $blog = News::find($id);
 
         // Check if the request has an image
-        if ($request->hasFile('image')) {
-            // Delete the old image
+        $fileName = $this->storeOptimizedImage($request, 'public/images/news');
+        if ($fileName) {
             Storage::delete('public/images/news/'.$blog->image);
-            // Store the new image
-            $file = $request->file('image');
-            $path = $file->store('public/images/news');
-            $fileName = basename($path);
             $blog->image = $fileName;
         }
 
@@ -124,10 +113,9 @@ class NewsController extends Controller
             }
             // Store the new gallery images
             $galleryImages = $request->file('gallery');
-            foreach($galleryImages as $gallery){
-                $path = $gallery->store('public/images/galleries');
-                $fileName = basename($path);
-                $blog->Blogimages()->create(['gallery' => $fileName]);
+            foreach($galleryImages as $gallery) {
+                $path = app(\App\Services\ImageUploadService::class)->store($gallery, 'public/images/galleries');
+                $blog->Blogimages()->create(['gallery' => $path]);
             }
         }
 

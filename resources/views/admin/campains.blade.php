@@ -189,13 +189,13 @@
                                     </div>
 
                                     <div class="row mb-3">
-                                        <div class="col-lg-6 col-sm-12">
-                                            <label for="image" class="form-label">Cover Image</label>
-                                            <input type="file" name="image" class="form-control" id="image" accept="image/*">
-                                        </div>
-                                        <div class="col-lg-6 col-sm-12">
-                                            <label for="youtube_cover_image" class="form-label">YouTube Cover Image</label>
-                                            <input type="file" name="youtube_cover_image" class="form-control" id="youtube_cover_image" accept="image/*">
+                                        <div class="col-12">
+                                            @include('admin.includes.image-picker', [
+                                                'name' => 'image',
+                                                'folder' => 'campaigns',
+                                                'label' => 'Cover Image',
+                                                'required' => true,
+                                            ])
                                         </div>
                                     </div>
                                 </div>

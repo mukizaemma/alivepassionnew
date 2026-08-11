@@ -124,21 +124,14 @@
 
 
                                                 <div class="row">
-                                                    <div class="col-lg-6 col-sm-12">
-                                                        <label>Company Logo </label><br>
-                                                        <label id="projectinput7" class="file center-block">
-                                                            <img src="{{ asset('storage/images') . $data->logo }}"
-                                                                alt="" width="150px">
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="col-lg-6 col-sm-12">
-                                                        <label>Change the Company Logo <br><span style="color: red">(This
-                                                                image should be resized to 120x90 pixels)</span></label>
-                                                        <label id="projectinput7" class="file center-block">
-                                                            <input type="file" id="image" name="logo">
-                                                            <span class="file-custom"></span>
-                                                        </label>
+                                                    <div class="col-12">
+                                                        @include('admin.includes.image-picker', [
+                                                            'name' => 'logo',
+                                                            'folder' => '',
+                                                            'label' => 'Company Logo',
+                                                            'current' => $data->logo,
+                                                            'currentUrl' => asset('storage/images' . $data->logo),
+                                                        ])
                                                     </div>
                                                 </div>
                                             </div>

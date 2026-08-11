@@ -130,9 +130,13 @@
                                         @csrf
                                         <div class="form-body">
                                             <div class="row mb-3">
-                                                <div class="col-lg-6 col-sm-12">
-                                                    <label for="image" class="form-label">Select File</label>
-                                                    <input type="file" id="image" name="image" class="form-control" required>
+                                                <div class="col-12">
+                                                    @include('admin.includes.image-picker', [
+                                                        'name' => 'image',
+                                                        'folder' => 'gallery',
+                                                        'label' => 'Gallery Image',
+                                                        'required' => true,
+                                                    ])
                                                 </div>
                                             </div>
 

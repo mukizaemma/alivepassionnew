@@ -2,6 +2,11 @@
 
 @section('content')
 
+    @include('frontend.includes.page-hero', [
+        'title' => 'Contact Us',
+        'subtitle' => 'We would love to walk with you — as a partner, donor, or friend of the ministry.',
+        'image' => $about->image2 ?? $about->image ?? null,
+    ])
 
         <!-- contact-area-start -->
         <div class="tp-contact__area">

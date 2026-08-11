@@ -45,16 +45,11 @@ class ImpactsController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'description' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:20480',
+            'existing_image' => 'nullable|string',
         ]);
 
-        $fileName = '';
-        if($request->hasFile('image')){
-            $file = $request->file('image');
-
-            $path = $file->store('public/images/impacts');
-            $fileName = basename($path);
-        }
+        $fileName = $this->storeOptimizedImage($request, 'public/images/impacts') ?: '';
 
         // Generate the slug
         $slug = Str::of($request->input('title'))->slug();
@@ -110,20 +105,11 @@ class ImpactsController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'description' => 'required',
-            'image' => 'image|max:2048',
+            'image' => 'nullable|image|max:20480',
+            'existing_image' => 'nullable|string',
         ]);
 
-        if ($request->hasFile('image')) {
-            if (File::exists($imagePath)) {
-                File::delete($imagePath);
-            }
-
-            $file = $request->file('image');
-            $path = $file->store('public/images/impacts');
-            $fileName = basename($path);
-        } else {
-            $fileName = $impact->image;
-        }
+        $fileName = $this->storeOptimizedImage($request, 'public/images/impacts') ?: $impact->image;
 
         $slug = Str::of($request->input('title'))->slug();
 

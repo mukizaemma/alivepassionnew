@@ -124,14 +124,13 @@
                                                     placeholder="Student Description"></textarea>
                                             </div>
 
-                                            <div class="row mt-5">
-
-                                                <div class="col-lg-6 col-sm-12">
-                                                    <label>Select File</label>
-                                                    <label id="projectinput7" class="file center-block">
-                                                        <input type="file" id="image" name="image">
-                                                        <span class="file-custom"></span>
-                                                    </label>
+                                            <div class="row mt-4">
+                                                <div class="col-12">
+                                                    @include('admin.includes.image-picker', [
+                                                        'name' => 'image',
+                                                        'folder' => 'students',
+                                                        'label' => 'Student Photo',
+                                                    ])
                                                 </div>
                                             </div>
 

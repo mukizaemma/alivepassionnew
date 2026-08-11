@@ -48,11 +48,8 @@ class EventController extends Controller
         $data ->registerLink = $request->registerLink;
         $data ->registerContact = $request->registerContact;
 
-        // Uploading image
-        if ($request->hasFile('image')) {
-            $dir = 'public/images/events';
-            $path = $request->file('image')->store($dir);
-            $fileName = str_replace($dir, '', $path);
+        $fileName = $this->storeOptimizedImage($request, 'public/images/events', 'image', true);
+        if ($fileName) {
             $data->image = $fileName;
         }
 
@@ -110,15 +107,8 @@ class EventController extends Controller
             return back()->with('Error','Event Not Found');
         }
 
-        if ($request->hasFile('image') && request('image') != '') {
-            $dir = 'public/images/events';
-
-            if (File::exists($dir)) {
-                unlink($dir);
-            }
-            $path = $request->file('image')->store($dir);
-            $fileName = str_replace($dir, '', $path);
-
+        $fileName = $this->storeOptimizedImage($request, 'public/images/events', 'image', true);
+        if ($fileName) {
             $data->image = $fileName;
         }
 

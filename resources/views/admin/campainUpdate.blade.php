@@ -105,16 +105,14 @@
                                     </div>
 
                                     <div class="row mt-3">
-                                        <div class="col-lg-4 col-sm-12">
-                                            <label class="form-label">Cover Image</label><br>
-                                            <img src="{{ asset('storage/images/campaigns/' . $campain->image) }}" alt="" width="120px">
-                                            <input type="file" name="image" class="form-control mt-2">
+                                        <div class="col-12">
+                                            @include('admin.includes.image-picker', [
+                                                'name' => 'image',
+                                                'folder' => 'campaigns',
+                                                'label' => 'Cover Image',
+                                                'current' => $campain->image,
+                                            ])
                                         </div>
-                                        {{-- <div class="col-lg-4 col-sm-12">
-                                            <label class="form-label">YouTube Cover Image</label><br>
-                                            <img src="{{ asset('storage/images/campains/' . $campain->youtubeimg) }}" alt="" width="120px">
-                                            <input type="file" name="youtubeimg" class="form-control mt-2">
-                                        </div> --}}
                                     </div>
                                 </div>
 

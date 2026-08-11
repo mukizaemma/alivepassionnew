@@ -37,10 +37,8 @@ class SlidesController extends Controller
         $data->heading = $request->input('heading', 'Default Heading');
         $data->subheading = "Alive Passion";
     
-        if ($request->hasFile('image')) {
-            $dir = 'public/images/slides';
-            $path = $request->file('image')->store($dir);
-            $fileName = str_replace($dir . '/', '', $path);
+        $fileName = $this->storeOptimizedImage($request, 'public/images/slides');
+        if ($fileName) {
             $data->image = $fileName;
         }
     
@@ -69,15 +67,8 @@ class SlidesController extends Controller
             return back()->with('Error','Image Not Found');
         }
 
-        if ($request->hasFile('image') && request('image') != '') {
-            $dir = 'public/images/slides';
-
-            if (File::exists($dir)) {
-                unlink($dir);
-            }
-            $path = $request->file('image')->store($dir);
-            $fileName = str_replace($dir, '', $path);
-
+        $fileName = $this->storeOptimizedImage($request, 'public/images/slides');
+        if ($fileName) {
             $data->image = $fileName;
         }
 

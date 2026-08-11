@@ -140,13 +140,13 @@
 
 
                                                 <div class="row">
-                                                    <div class="col-lg-6 col-sm-12">
-                                                            <label>Select Event Banner <br><span style="color: red">(This image should be resized to 540x600 pixels)</span></label>
-                                                            <label id="projectinput7" class="file center-block">
-                                                                <input type="file" id="image" name="image"
-                                                                    required="">
-                                                                <span class="file-custom"></span>
-                                                            </label>
+                                                    <div class="col-12">
+                                                        @include('admin.includes.image-picker', [
+                                                            'name' => 'image',
+                                                            'folder' => 'events',
+                                                            'label' => 'Event Banner',
+                                                            'required' => true,
+                                                        ])
                                                     </div>
 
 

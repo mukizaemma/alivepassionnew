@@ -48,11 +48,8 @@ class StaffController extends Controller
         $data ->twitter = $request->twitter;
         $data ->bio = $request->bio;
 
-        // Uploading image
-        if ($request->hasFile('image')) {
-            $dir = 'public/images/staff';
-            $path = $request->file('image')->store($dir);
-            $fileName = str_replace($dir, '', $path);
+        $fileName = $this->storeOptimizedImage($request, 'public/images/staff', 'image', true);
+        if ($fileName) {
             $data->image = $fileName;
         }
 
@@ -112,15 +109,8 @@ class StaffController extends Controller
             return back()->with('Error','Staff Not Found');
         }
 
-        if ($request->hasFile('image') && request('image') != '') {
-            $dir = 'public/images/staff';
-
-            if (File::exists($dir)) {
-                unlink($dir);
-            }
-            $path = $request->file('image')->store($dir);
-            $fileName = str_replace($dir, '', $path);
-
+        $fileName = $this->storeOptimizedImage($request, 'public/images/staff', 'image', true);
+        if ($fileName) {
             $data->image = $fileName;
         }
 

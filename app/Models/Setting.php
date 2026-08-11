@@ -15,4 +15,30 @@ class Setting extends Model
     {
         return $this->donate_url ?: self::DEFAULT_DONATE_URL;
     }
+
+    public function getWhatsappNumber(): ?string
+    {
+        $phone = $this->phone ?: $this->phone1 ?: $this->phone2;
+        if (!$phone) {
+            return null;
+        }
+
+        $digits = preg_replace('/\D+/', '', $phone);
+        if ($digits === '') {
+            return null;
+        }
+
+        if (str_starts_with($digits, '0')) {
+            $digits = '250'.substr($digits, 1);
+        }
+
+        return $digits;
+    }
+
+    public function getWhatsappUrl(): ?string
+    {
+        $number = $this->getWhatsappNumber();
+
+        return $number ? 'https://wa.me/'.$number : null;
+    }
 }

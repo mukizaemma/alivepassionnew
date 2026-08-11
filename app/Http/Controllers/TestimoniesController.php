@@ -39,11 +39,8 @@ class TestimoniesController extends Controller
         $data ->title = $request->title;
         $data ->testimony = $request->testimony;
 
-        // Uploading image
-        if ($request->hasFile('image')) {
-            $dir = 'public/images/testimonies';
-            $path = $request->file('image')->store($dir);
-            $fileName = str_replace($dir, '', $path);
+        $fileName = $this->storeOptimizedImage($request, 'public/images/testimonies', 'image', true);
+        if ($fileName) {
             $data->image = $fileName;
         }
 
@@ -97,15 +94,8 @@ class TestimoniesController extends Controller
             return back()->with('Error','Testimony Not Found');
         }
 
-        if ($request->hasFile('image') && request('image') != '') {
-            $dir = 'public/images/testimonies';
-
-            if (File::exists($dir)) {
-                unlink($dir);
-            }
-            $path = $request->file('image')->store($dir);
-            $fileName = str_replace($dir, '', $path);
-
+        $fileName = $this->storeOptimizedImage($request, 'public/images/testimonies', 'image', true);
+        if ($fileName) {
             $data->image = $fileName;
         }
 

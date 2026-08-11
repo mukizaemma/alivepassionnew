@@ -11,6 +11,7 @@
                 data-wow-delay=".5s">
                     <div class="tp-about-4__left-side alive-founder-panel">
                         <div class="tp-about-4__section-title">
+                            <p class="alive-eyebrow">Our Story</p>
                             <h4 class="tp-section-title alive-section-title">The Founder</h4>
                         </div>
                         <div class="tp-about-4__content">

@@ -47,20 +47,14 @@
                         @csrf
                         <div class="form-body">
 
-                            <div class="row mb-5">
-
-                                <div class="col-lg-4 col-sm-12">
-                                        <label>Featured Image<br></label>
-                                        <label id="projectinput7" class="file center-block">
-                                            <img src="{{ asset('storage/images/slides/' . $data->image) }}" alt="" width="120px">
-                                        </label>
-                                </div>
-                                <div class="col-lg-4 col-sm-12">
-                                        <label>Change Image <br><span style="color: red">(This image should be resized to 694x1894 pixels)</span></label>
-                                        <label id="projectinput7" class="file center-block">
-                                            <input type="file" id="image" name="image">
-                                            <span class="file-custom"></span>
-                                        </label>
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    @include('admin.includes.image-picker', [
+                                        'name' => 'image',
+                                        'folder' => 'slides',
+                                        'label' => 'Slide Image',
+                                        'current' => $data->image,
+                                    ])
                                 </div>
                             </div>
 
